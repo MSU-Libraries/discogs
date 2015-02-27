@@ -8,7 +8,7 @@ from urlparse import urljoin
 import networkx as nx
 from pprint import pprint
 from itertools import combinations
-from pyjson import JsonObject
+from pyjson import FormatObject
 import networkx as nx
 from networkx.readwrite import json_graph
 
@@ -61,7 +61,7 @@ class DiscogsApi():
                 for release in collection["releases"]:
                     self.releases.append(release)
 
-        print "Processing {:=^30} Releases".format(len(self.releases))
+        print "{:=^30} Releases".format(len(self.releases))
 
         return self.releases
 
@@ -94,8 +94,26 @@ class DiscogsData():
         self.co_graph = None
         self.path_to_data = path_to_data
         if self.path_to_data is not None:
-            json_object = JsonObject()
+            json_object = FormatObject()
             self.data = json_object.LoadJson(self.path_to_data)
+
+    def ReturnXmlReleases(self, username="username", folder_id="folder_id", output_path="/"):
+        self.username = username
+        self.folder_id = folder_id
+        dapi = DiscogsApi()
+        self.releases = dapi.GetCollection(self.username, folder_id=self.folder_id)
+        for i, release in enumerate(self.releases):
+            r_id = release["id"]
+            release_data = dapi.GetRelease(r_id)
+            sys.stdout.write("{:=^30}\r".format(i+1))
+            sys.stdout.flush()
+            a = FormatObject()
+            xml = a.DictToXml(release_data)
+            full_path = os.path.join(output_path, str(r_id)+".xml")
+            a.WriteFile(xml, full_path)
+            print "Wrote file at {0}".format(full_path)
+
+
 
     def CollectionStyleGraph(self, username="username", folder_id="0"):
         self.username = username
@@ -129,8 +147,8 @@ class DiscogsData():
             print "GEXF Written to {0}".format(output_path)
 
         elif data_type == "d3":
-            data = json_graph(self.co_graph)
-            json_data = JsonObject()
+            data = json_graph.node_link_data(self.co_graph)
+            json_data = FormatObject()
             if not output_path.endswith(".json"):
                 output_path += ".json"
             json_data.SaveAsJson(data, output_path)
@@ -178,9 +196,9 @@ class DiscogsData():
         self.styles = {}
 
         dapi = DiscogsApi()
-        self.collection = dapi.GetCollection(self.username, folder_id=self.folder_id)
+        self.releases = dapi.GetCollection(self.username, folder_id=self.folder_id)
         i = 0
-        for release in self.collection:
+        for release in self.releases:
             #print release["basic_information"]["artists"][0]["name"]
             r_id = release["id"]
             release_data = dapi.GetRelease(r_id)

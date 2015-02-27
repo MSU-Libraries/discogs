@@ -9,11 +9,11 @@ Scripts for accessing discogs API and processing data.
 
 Scripts currently in place to return a user's collection; compiles styles for all releases; build network graph and output results in gephi or D3 format.
 
-Clone repository and change into its directory:
+Clone repository and change into its `py` directory:
 
-	cd discogs
+	cd discogs/py
 
-Open Python (iPython) shell:
+Open Python (or iPython) shell:
 
     from discogs import DiscogsData
     dd = DiscogsData()
@@ -29,8 +29,8 @@ To instead load locally-stored data, supply a path to a JSON file in the appropr
 
 To output the data in a format suitable for use in Gephi or a D3 network graph:
 
-    a.GraphOutput("gephi", output_path="/path/to/new/file")
-    a.GraphOutput("d3", output_path="path/to/new/file")
+    dd.GraphOutput("gephi", output_path="/path/to/new/file")
+    dd.GraphOutput("d3", output_path="path/to/new/file")
 
 Or, to save other computed data as JSON for later use:
 

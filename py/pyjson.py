@@ -1,6 +1,7 @@
 import json
+from dicttoxml import dicttoxml
 
-class JsonObject():
+class FormatObject():
 
     def __init__(self):
         pass
@@ -13,4 +14,15 @@ class JsonObject():
         with open(filepath) as f:
             data = json.load(f)
         return data
+
+    def DictToXml(self, dictionary):
+        xml = dicttoxml(dictionary)
+        return xml
+
+    def WriteFile(self, data, path, opener="w"):
+        with open(path, opener) as f:
+            f.write(data)
+
+
+
         
