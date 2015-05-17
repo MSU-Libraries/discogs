@@ -1,0 +1,3 @@
+[submodule "formatobject"]
+	path = formatobject
+	url = git@git.lib.msu.edu:higgi135/formatobject.git
