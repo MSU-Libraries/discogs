@@ -4,6 +4,7 @@ import json
 import os
 import sys
 import time
+import ConfigParser
 from urlparse import urljoin
 import networkx as nx
 from pprint import pprint
@@ -16,27 +17,38 @@ from networkx.readwrite import json_graph
 class DiscogsApi():
     """Class for interacting with Discogs API."""
     
-    def __init__(self):
+    def __init__(self, username=None):
         """Establish base API url and provide arbitrary user agent name."""    
         self.base_url = "https://api.discogs.com"
         self.user_agent = "DevinHigginsMSULibraries/0.1"
+        self.params = {}
 
-    def _OpenUrl(self):
+        if username:
+            self.username = username
+            self._get_token()
+
+    def open_url(self, url, request_type=None):
         """Function to make all calls to the API."""
         data = ""
         if self.params:
             data = urllib.urlencode(self.params)
-            search_url = "?".join([self.url, data])
+            search_url = "?".join([url, data])
         else:
             search_url = self.url
+
         request = urllib2.Request(search_url)
         request.add_header('User-Agent', self.user_agent)
-        response = urllib2.urlopen(request)
+        if request_type == "POST":
+            response = urllib2.urlopen(request, data="")
+        
+        else:
+            response = urllib2.urlopen(request)
         json_response = json.load(response)
         time.sleep(2)
         return json_response
 
-    def _AddParam(self, key, value):
+
+    def add_param(self, key, value):
         """
         Add parameter to the header of the request sent to the API.
 
@@ -47,12 +59,12 @@ class DiscogsApi():
 
         self.params[key] = value
 
-    def _ClearParams(self):
+    def clear_params(self):
         """Clear all current header parameters."""
 
         self.params = {}
 
-    def GetCollection(self, username, folder_id="0", per_page=100):
+    def get_collection(self, username, folder_id="0", per_page=100):
         """
         Use discogs username to return release data from given folder.
         Most folders require authentication for access. Folder "0" is the "all" folder.
@@ -65,18 +77,18 @@ class DiscogsApi():
         per_page (int) -- The number of results to return per request. Max value is 100.
         """
 
-        self._ClearParams()
-        self._AddParam("per_page", per_page)
+        self.clear_params()
+        self.add_param("per_page", per_page)
 
         self.collection_extension = "/users/{username}/collection/folders/{folder_id}/releases".format(username=username, folder_id=folder_id)
-        self.url = self._BuildUrl(self.collection_extension)
-        self.collection = self._OpenUrl()
+        self.url = self.build_url(self.collection_extension)
+        self.collection = self.open_url(self.url)
         self.releases = self.collection["releases"]
         print "{:=^30}".format("Getting Collection")
         if self.collection["pagination"]["pages"] > 1:
             for i in range(2, self.collection["pagination"]["pages"]+1, 1):
-                self._AddParam("page", i)
-                collection = self._OpenUrl()
+                self.add_param("page", i)
+                collection = self.open_url(self.url)
                 for release in collection["releases"]:
                     self.releases.append(release)
 
@@ -91,14 +103,15 @@ class DiscogsApi():
         Positional arguments:
         release_id (str) -- The numerical id for a given discogs release.
         """
-        self._ClearParams()
+        self.clear_params()
         self.release_extension = "/releases/{release_id}".format(release_id=release_id)
-        self.url = self._BuildUrl(self.release_extension)
-        self.release = self._OpenUrl()
+        self.url = self.build_url(self.release_extension)
+        self.release = self.open_url(self.url)
 
         return self.release
 
-    def _BuildUrl(self, url_extension):
+
+    def build_url(self, url_extension):
         """
         Combine base url and search extension.
 
@@ -106,6 +119,14 @@ class DiscogsApi():
         url_extension (str) -- query string to append to the base url.
         """
         return urljoin(self.base_url, url_extension)
+
+
+    def _get_token(self):
+        """Read config file and get user token."""
+        config = ConfigParser.RawConfigParser()
+        config.read('config.cfg')
+        self.user_token = config.get(self.username, "user_token")
+
 
 
 class DiscogsData():
@@ -139,7 +160,7 @@ class DiscogsData():
         self.username = username
         self.folder_id = folder_id
         dapi = DiscogsApi()
-        self.releases = dapi.GetCollection(self.username, folder_id=self.folder_id)
+        self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
         for i, release in enumerate(self.releases):
             r_id = release["id"]
             release_data = dapi.GetRelease(r_id)
