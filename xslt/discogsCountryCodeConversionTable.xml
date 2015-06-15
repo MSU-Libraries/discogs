@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    COPYRIGHT © 2015
+    MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES
+    ALL RIGHTS RESERVED
+    
+    PERMISSION IS GRANTED TO USE, COPY, CREATE DERIVATIVE WORKS AND REDISTRIBUTE
+    THIS SOFTWARE AND SUCH DERIVATIVE WORKS FOR ANY PURPOSE, SO LONG AS THE NAME
+    OF MICHIGAN STATE UNIVERSITY IS NOT USED IN ANY ADVERTISING OR PUBLICITY
+    PERTAINING TO THE USE OR DISTRIBUTION OF THIS SOFTWARE WITHOUT SPECIFIC,
+    WRITTEN PRIOR AUTHORIZATION.  IF THE ABOVE COPYRIGHT NOTICE OR ANY OTHER
+    IDENTIFICATION OF MICHIGAN STATE UNIVERSITY IS INCLUDED IN ANY COPY OF ANY
+    PORTION OF THIS SOFTWARE, THEN THE DISCLAIMER BELOW MUST ALSO BE INCLUDED.
+    
+    THIS SOFTWARE IS PROVIDED AS IS, WITHOUT REPRESENTATION FROM MICHIGAN STATE
+    UNIVERSITY AS TO ITS FITNESS FOR ANY PURPOSE, AND WITHOUT WARRANTY BY
+    MICHIGAN STATE UNIVERSITY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
+    WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE. THE MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES SHALL
+    NOT BE LIABLE FOR ANY DAMAGES, INCLUDING SPECIAL, INDIRECT, INCIDENTAL, OR
+    CONSEQUENTIAL DAMAGES, WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN
+    CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS BEEN OR IS HEREAFTER
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+    
+    Code written by Lucas Mak
+    2015
+    (c) Michigan State University Board of Trustees
+    Licensed under GNU General Public License (GPL) Version 2.
+-->
+<data>
+    <pair country="" countryCode="xx "/>
+    <pair country="Australia" countryCode="at "/>
+    <pair country="Belgium" countryCode="be "/>
+    <pair country="Brazil" countryCode="bl "/>
+    <pair country="Canada" countryCode="xxc"/>
+    <pair country="China" countryCode="cc "/>
+    <pair country="Cuba" countryCode="cu "/>
+    <pair country="France" countryCode="fr "/>
+    <pair country="Germany" countryCode="gw "/>
+    <pair country="India" countryCode="ii "/>
+    <pair country="Ireland" countryCode="ie "/>
+    <pair country="Italy" countryCode="it "/>
+    <pair country="Jamaica" countryCode="jm "/>
+    <pair country="Japan" countryCode="ja "/>
+    <pair country="Mexico" countryCode="mx "/>
+    <pair country="Netherlands" countryCode="ne "/>
+    <pair country="New Zealand" countryCode="nz "/>
+    <pair country="Spain" countryCode="sp "/>
+    <pair country="Sweden" countryCode="sw "/>
+    <pair country="Switzerland" countryCode="sz "/>
+    <pair country="UK" countryCode="xxk"/>
+    <pair country="US" countryCode="xxu"/>
+    <pair country="Africa" countryCode="xx "/>
+    <pair country="Asia" countryCode="xx "/>
+    <pair country="Australasia" countryCode="xx "/>
+    <pair country="Australia &amp; New Zealand" countryCode="xx "/>
+    <pair country="Benelux" countryCode="xx "/>
+    <pair country="Central America" countryCode="xx "/>
+    <pair country="Europe" countryCode="xx "/>
+    <pair country="France &amp; Benelux" countryCode="xx "/>
+    <pair country="Germany &amp; Switzerland" countryCode="xx "/>
+    <pair country="Germany, Austria, &amp; Switzerland" countryCode="xx "/>
+    <pair country="Gulf Cooperation Council" countryCode="xx "/>
+    <pair country="Middle East" countryCode="xx "/>
+    <pair country="North America (inc Mexico)" countryCode="xx "/>
+    <pair country="Scandinavia" countryCode="xx "/>
+    <pair country="South America" countryCode="xx "/>
+    <pair country="South East Asia" countryCode="xx "/>
+    <pair country="UK &amp; Europe" countryCode="xx "/>
+    <pair country="UK &amp; France" countryCode="xx "/>
+    <pair country="UK &amp; Ireland" countryCode="xx "/>
+    <pair country="UK &amp; US" countryCode="xx "/>
+    <pair country="UK, Europe &amp; Israel" countryCode="xx "/>
+    <pair country="UK, Europe &amp; Japan" countryCode="xx "/>
+    <pair country="UK, Europe &amp; US" countryCode="xx "/>
+    <pair country="USA &amp; Canada" countryCode="xx "/>
+    <pair country="USA, Canada &amp; Europe" countryCode="xx "/>
+    <pair country="USA, Canada &amp; UK" countryCode="xx "/>
+    <pair country="Abkhazia" countryCode="gs "/>
+    <pair country="Afghanistan" countryCode="af "/>
+    <pair country="Albania" countryCode="aa "/>
+    <pair country="Algeria" countryCode="ae "/>
+    <pair country="American Samoa" countryCode="as "/>
+    <pair country="Andorra" countryCode="an "/>
+    <pair country="Angola" countryCode="ao "/>
+    <pair country="Anguilla" countryCode="am "/>
+    <pair country="Antarctica" countryCode="ay "/>
+    <pair country="Antigua &amp; Barbuda" countryCode="aq "/>
+    <pair country="Argentina" countryCode="ag "/>
+    <pair country="Armenia" countryCode="ai "/>
+    <pair country="Aruba" countryCode="aw "/>
+    <pair country="Austria" countryCode="au "/>
+    <pair country="Austria-Hungary" countryCode="xx "/>
+    <pair country="Azerbaijan" countryCode="aj "/>
+    <pair country="Bahamas, The" countryCode="bf "/>
+    <pair country="Bahrain" countryCode="ba "/>
+    <pair country="Bangladesh" countryCode="bg "/>
+    <pair country="Barbados" countryCode="bb "/>
+    <pair country="Belarus" countryCode="bw "/>
+    <pair country="Belize" countryCode="bh "/>
+    <pair country="Benin" countryCode="dm "/>
+    <pair country="Bermuda" countryCode="bm "/>
+    <pair country="Bhutan" countryCode="bt "/>
+    <pair country="Bohemia" countryCode="xr "/>
+    <pair country="Bolivia" countryCode="bo "/>
+    <pair country="Bosnia &amp; Herzegovina" countryCode="bn "/>
+    <pair country="Botswana" countryCode="bs "/>
+    <pair country="British Indian Ocean Territory" countryCode="bi "/>
+    <pair country="British Virgin Islands" countryCode="vb "/>
+    <pair country="Brunei" countryCode="bx "/>
+    <pair country="Bulgaria" countryCode="bu "/>
+    <pair country="Burkina Faso" countryCode="uv "/>
+    <pair country="Burma" countryCode="br "/>
+    <pair country="Burundi" countryCode="bd "/>
+    <pair country="Cambodia" countryCode="cb "/>
+    <pair country="Cameroon" countryCode="cm "/>
+    <pair country="Cape Verde" countryCode="cv "/>
+    <pair country="Cayman Islands" countryCode="cj "/>
+    <pair country="Central African Republic" countryCode="cx "/>
+    <pair country="Chad" countryCode="cd "/>
+    <pair country="Chile" countryCode="cl "/>
+    <pair country="Christmas Island" countryCode="xa "/>
+    <pair country="Cocos (Keeling) Islands" countryCode="xb "/>
+    <pair country="Colombia" countryCode="ck "/>
+    <pair country="Comoros" countryCode="cq "/>
+    <pair country="Congo, Democratic Republic of the" countryCode="cg "/>
+    <pair country="Congo, Republic of the" countryCode="cf "/>
+    <pair country="Cook Islands" countryCode="cw "/>
+    <pair country="Costa Rica" countryCode="cr "/>
+    <pair country="Croatia" countryCode="ci "/>
+    <pair country="Curaçao" countryCode="co "/>
+    <pair country="Cyprus" countryCode="cy "/>
+    <pair country="Czech Republic" countryCode="xr "/>
+    <pair country="Czechoslovakia" countryCode="cs "/>
+    <pair country="Dahomey" countryCode="bn "/>
+    <pair country="Denmark" countryCode="dk "/>
+    <pair country="Djibouti" countryCode="ft "/>
+    <pair country="Dominica" countryCode="dq "/>
+    <pair country="Dominican Republic" countryCode="dr "/>
+    <pair country="Dutch East Indies" countryCode="io "/>
+    <pair country="East Timor" countryCode="em "/>
+    <pair country="Ecuador" countryCode="ec "/>
+    <pair country="Egypt" countryCode="ua "/>
+    <pair country="El Salvador" countryCode="es "/>
+    <pair country="Equatorial Guinea" countryCode="eg "/>
+    <pair country="Eritrea" countryCode="ea "/>
+    <pair country="Estonia" countryCode="er "/>
+    <pair country="Ethiopia" countryCode="et "/>
+    <pair country="Falkland Islands" countryCode="fk "/>
+    <pair country="Faroe Islands" countryCode="fa "/>
+    <pair country="Fiji" countryCode="fj "/>
+    <pair country="Finland" countryCode="fi "/>
+    <pair country="French Guiana" countryCode="fg "/>
+    <pair country="French Polynesia" countryCode="fp "/>
+    <pair country="French Southern &amp; Antarctic Lands" countryCode="fs "/>
+    <pair country="Gabon" countryCode="go "/>
+    <pair country="Gambia, The" countryCode="gm "/>
+    <pair country="Gaza Strip" countryCode="gz "/>
+    <pair country="Georgia" countryCode="gau"/>
+    <pair country="German Democratic Republic (GDR)" countryCode="ge "/>
+    <pair country="Ghana" countryCode="gh "/>
+    <pair country="Gibraltar" countryCode="gi "/>
+    <pair country="Greece" countryCode="gr "/>
+    <pair country="Greenland" countryCode="gl "/>
+    <pair country="Grenada" countryCode="gd "/>
+    <pair country="Guadeloupe" countryCode="gp "/>
+    <pair country="Guam" countryCode="gu "/>
+    <pair country="Guatemala" countryCode="gt "/>
+    <pair country="Guernsey" countryCode="uik"/>
+    <pair country="Guinea" countryCode="gv "/>
+    <pair country="Guinea-Bissau" countryCode="pg "/>
+    <pair country="Guyana" countryCode="gy "/>
+    <pair country="Haiti" countryCode="ht "/>
+    <pair country="Honduras" countryCode="ho "/>
+    <pair country="Hong Kong" countryCode="hk "/>
+    <pair country="Hungary" countryCode="hu "/>
+    <pair country="Iceland" countryCode="ic "/>
+    <pair country="Indonesia" countryCode="io "/>
+    <pair country="Iran" countryCode="ir "/>
+    <pair country="Iraq" countryCode="iq "/>
+    <pair country="Israel" countryCode="is "/>
+    <pair country="Ivory Coast" countryCode="iv "/>
+    <pair country="Jersey" countryCode="uik"/>
+    <pair country="Jordan" countryCode="jo "/>
+    <pair country="Kazakhstan" countryCode="kz "/>
+    <pair country="Kenya" countryCode="ke "/>
+    <pair country="Kiribati" countryCode="gb "/>
+    <pair country="Kosovo" countryCode="kv "/>
+    <pair country="Kuwait" countryCode="ku "/>
+    <pair country="Kyrgyzstan" countryCode="kg "/>
+    <pair country="Laos" countryCode="ls "/>
+    <pair country="Latvia" countryCode="lv "/>
+    <pair country="Lebanon" countryCode="le "/>
+    <pair country="Lesotho" countryCode="lo "/>
+    <pair country="Liberia" countryCode="lb "/>
+    <pair country="Libya" countryCode="ly "/>
+    <pair country="Liechtenstein" countryCode="lh "/>
+    <pair country="Lithuania" countryCode="li "/>
+    <pair country="Luxembourg" countryCode="lu "/>
+    <pair country="Macau" countryCode="mh "/>
+    <pair country="Macedonia" countryCode="xn "/>
+    <pair country="Madagascar" countryCode="mg "/>
+    <pair country="Malawi" countryCode="mw "/>
+    <pair country="Malaysia" countryCode="my "/>
+    <pair country="Maldives" countryCode="xc "/>
+    <pair country="Mali" countryCode="ml "/>
+    <pair country="Malta" countryCode="mm "/>
+    <pair country="Man, Isle of" countryCode="uik"/>
+    <pair country="Marshall Islands" countryCode="xe "/>
+    <pair country="Martinique" countryCode="mq "/>
+    <pair country="Mauritania" countryCode="mu "/>
+    <pair country="Mauritius" countryCode="mf "/>
+    <pair country="Mayotte" countryCode="ot "/>
+    <pair country="Micronesia, Federated States of" countryCode="fm "/>
+    <pair country="Moldova, Republic of" countryCode="mv "/>
+    <pair country="Monaco" countryCode="mc "/>
+    <pair country="Mongolia" countryCode="mp "/>
+    <pair country="Montenegro" countryCode="mo "/>
+    <pair country="Montserrat" countryCode="mj "/>
+    <pair country="Morocco" countryCode="mr "/>
+    <pair country="Mozambique" countryCode="mz "/>
+    <pair country="Namibia" countryCode="sx "/>
+    <pair country="Nauru" countryCode="nu "/>
+    <pair country="Nepal" countryCode="np "/>
+    <pair country="Netherlands Antilles" countryCode="na "/>
+    <pair country="New Caledonia" countryCode="nl "/>
+    <pair country="Nicaragua" countryCode="nq "/>
+    <pair country="Niger" countryCode="ng "/>
+    <pair country="Nigeria" countryCode="nr "/>
+    <pair country="Niue" countryCode="xh "/>
+    <pair country="Norfolk Island" countryCode="nx "/>
+    <pair country="Northern Mariana Islands" countryCode="nw "/>
+    <pair country="North Korea" countryCode="kn "/>
+    <pair country="Norway" countryCode="no "/>
+    <pair country="Oman" countryCode="mk "/>
+    <pair country="Ottoman Empire" countryCode="tu "/>
+    <pair country="Pakistan" countryCode="pk "/>
+    <pair country="Palau" countryCode="pw "/>
+    <pair country="Panama" countryCode="pn "/>
+    <pair country="Papua New Guinea" countryCode="pp "/>
+    <pair country="Paraguay" countryCode="py "/>
+    <pair country="Peru" countryCode="pe "/>
+    <pair country="Philippines" countryCode="ph "/>
+    <pair country="Pitcairn Islands" countryCode="pc "/>
+    <pair country="Poland" countryCode="pl "/>
+    <pair country="Portugal" countryCode="po "/>
+    <pair country="Protectorate of Bohemia and Moravia" countryCode="xr "/>
+    <pair country="Puerto Rico" countryCode="pr "/>
+    <pair country="Qatar" countryCode="qa "/>
+    <pair country="Reunion" countryCode="re "/>
+    <pair country="Rhodesia" countryCode="rh "/>
+    <pair country="Romania" countryCode="rm "/>
+    <pair country="Russia" countryCode="ru "/>
+    <pair country="Rwanda" countryCode="rw "/>
+    <pair country="Saint Helena" countryCode="xj "/>
+    <pair country="Saint Kitts and Nevis" countryCode="xd "/>
+    <pair country="Saint Lucia" countryCode="xk "/>
+    <pair country="Saint Pierre and Miquelon" countryCode="xl "/>
+    <pair country="Saint Vincent and the Grenadines" countryCode="xm "/>
+    <pair country="Samoa" countryCode="ws "/>
+    <pair country="San Marino" countryCode="sm "/>
+    <pair country="Sao Tome and Principe" countryCode="sf "/>
+    <pair country="Saudi Arabia" countryCode="su "/>
+    <pair country="Senegal" countryCode="sg "/>
+    <pair country="Serbia" countryCode="rb "/>
+    <pair country="Serbia and Montenegro" countryCode="yu "/>
+    <pair country="Seychelles" countryCode="se "/>
+    <pair country="Sierra Leone" countryCode="sl "/>
+    <pair country="Singapore" countryCode="si "/>
+    <pair country="Singapore, Malaysia &amp; Hong Kong" countryCode="xx "/>
+    <pair country="Sint Maarten" countryCode="sn "/>
+    <pair country="Slovakia" countryCode="xo "/>
+    <pair country="Slovenia" countryCode="xv "/>
+    <pair country="Solomon Islands" countryCode="bp "/>
+    <pair country="Somalia" countryCode="so "/>
+    <pair country="Southern Rhodesia" countryCode="rh "/>
+    <pair country="South Africa" countryCode="sa "/>
+    <pair country="South Georgia and the South Sandwich Islands" countryCode="xs "/>
+    <pair country="South Korea" countryCode="ko "/>
+    <pair country="South Vietnam" countryCode="vs "/>
+    <pair country="Southern Sudan" countryCode="sd "/>
+    <pair country="Sri Lanka" countryCode="ce "/>
+    <pair country="Sudan" countryCode="sj "/>
+    <pair country="Suriname" countryCode="sr "/>
+    <pair country="Swaziland" countryCode="sq "/>
+    <pair country="Syria" countryCode="sy "/>
+    <pair country="Tajikistan" countryCode="ta "/>
+    <pair country="Tanzania" countryCode="tz "/>
+    <pair country="Thailand" countryCode="th "/>
+    <pair country="Tibet" countryCode="cc "/>
+    <pair country="Taiwan" countryCode="ch "/>
+    <pair country="Togo" countryCode="tg "/>
+    <pair country="Tokelau" countryCode="tl "/>
+    <pair country="Tonga" countryCode="to "/>
+    <pair country="Trinidad &amp; Tobago" countryCode="tr "/>
+    <pair country="Tunisia" countryCode="ti "/>
+    <pair country="Turkey" countryCode="tu "/>
+    <pair country="Turkmenistan" countryCode="tk "/>
+    <pair country="Turks and Caicos Islands" countryCode="tc "/>
+    <pair country="Tuvalu" countryCode="tv "/>
+    <pair country="Uganda" countryCode="ug "/>
+    <pair country="Ukraine" countryCode="un "/>
+    <pair country="United Arab Emirates" countryCode="ts "/>
+    <pair country="Upper Volta" countryCode="uv "/>
+    <pair country="Uruguay" countryCode="uy "/>
+    <pair country="USSR" countryCode="xxr"/>
+    <pair country="Uzbekistan" countryCode="uz "/>
+    <pair country="Vatican City" countryCode="vc "/>
+    <pair country="Vanuatu" countryCode="nn "/>
+    <pair country="Venezuela" countryCode="ve "/>
+    <pair country="Vietnam" countryCode="vm "/>
+    <pair country="Virgin Islands" CountryCode="vi "/>
+    <pair country="Wake Island" countryCode="wk "/>
+    <pair country="Wallis and Futuna" countryCode="wf "/>
+    <pair country="West Bank" countryCode="wj "/>
+    <pair country="Western Sahara" countryCode="ss "/>
+    <pair country="Yemen" countryCode="ye "/>
+    <pair country="Yugoslavia" countryCode="yu "/>
+    <pair country="Zaire" countryCode="cg "/>
+    <pair country="Zambia" countryCode="za "/>
+    <pair country="Zimbabwe" countryCode="rh "/>
+</data>

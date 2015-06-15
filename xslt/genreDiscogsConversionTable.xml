@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    COPYRIGHT © 2015
+    MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES
+    ALL RIGHTS RESERVED
+    
+    PERMISSION IS GRANTED TO USE, COPY, CREATE DERIVATIVE WORKS AND REDISTRIBUTE
+    THIS SOFTWARE AND SUCH DERIVATIVE WORKS FOR ANY PURPOSE, SO LONG AS THE NAME
+    OF MICHIGAN STATE UNIVERSITY IS NOT USED IN ANY ADVERTISING OR PUBLICITY
+    PERTAINING TO THE USE OR DISTRIBUTION OF THIS SOFTWARE WITHOUT SPECIFIC,
+    WRITTEN PRIOR AUTHORIZATION.  IF THE ABOVE COPYRIGHT NOTICE OR ANY OTHER
+    IDENTIFICATION OF MICHIGAN STATE UNIVERSITY IS INCLUDED IN ANY COPY OF ANY
+    PORTION OF THIS SOFTWARE, THEN THE DISCLAIMER BELOW MUST ALSO BE INCLUDED.
+    
+    THIS SOFTWARE IS PROVIDED AS IS, WITHOUT REPRESENTATION FROM MICHIGAN STATE
+    UNIVERSITY AS TO ITS FITNESS FOR ANY PURPOSE, AND WITHOUT WARRANTY BY
+    MICHIGAN STATE UNIVERSITY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
+    WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE. THE MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES SHALL
+    NOT BE LIABLE FOR ANY DAMAGES, INCLUDING SPECIAL, INDIRECT, INCIDENTAL, OR
+    CONSEQUENTIAL DAMAGES, WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN
+    CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS BEEN OR IS HEREAFTER
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+    
+    Code written by Autumn Faulkner & Lucas Mak
+    2015
+    (c) Michigan State University Board of Trustees
+    Licensed under GNU General Public License (GPL) Version 2.
+-->
+<data>
+    <pair discogs_term="Aboriginal" lcgft1="Folk music" lcgft2=""
+        lcsh1="Aboriginal Australians |v Music" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Abstract" lcgft1="Electronica (Music)" lcgft2="" lcsh1="Avant-garde (Music)"
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Acid" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Acid House" lcgft1="House music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Acid Jazz" lcgft1="Electronica (Music)" lcgft2="Jazz " lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Acid Rock" lcgft1="Psychedelic rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Acoustic" lcgft1="Rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="African" lcgft1="Folk music" lcgft2="" lcsh1="Folk music |z Africa" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Afrobeat" lcgft1="Funk (Music)" lcgft2="" lcsh1="Afrobeat " lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Afrobeat" lcgft1="Jazz" lcgft2="" lcsh1="Afrobeat " lcsh2="" lcmpt=""/>
+    <pair discogs_term="Afro-Cuban" lcgft1="Folk music" lcgft2="Popular music"
+        lcsh1="Popular music |z Cuba" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Afro-Cuban Jazz" lcgft1="Latin jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Alternative Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ambient" lcgft1="Ambient music (Electronica)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Andalusian Classical" lcgft1="Art music" lcgft2=""
+        lcsh1="Music |z Andalusia (Spain)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Arena Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Art Rock" lcgft1="Progressive rock (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Audiobook" lcgft1="Audiobooks" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Avantgarde" lcgft1="Alternative rock music" lcgft2=""
+        lcsh1="Avant-garde (Music)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Avant-garde Jazz" lcgft1="Jazz" lcgft2="" lcsh1="Avant-garde (Music)"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Axé" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Brazil"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bachata" lcgft1="Bachata" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ballad" lcgft1="Popular music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Baltimore Club" lcgft1="House music" lcgft2="Rap (Music)"
+        lcsh1="Underground dance music |z Maryland |z Baltimore " lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Bangladeshi Classical" lcgft1="Art music" lcgft2=""
+        lcsh1="Music |z Bangladesh" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Baroque" lcgft1="Art music" lcgft2="" lcsh1="Music |y 17th century"
+        lcsh2="Music |y 18th century" lcmpt=""/>
+    <pair discogs_term="Bass Music" lcgft1="Underground dance music" lcgft2=""
+        lcsh1="Underground dance music |z Great Britain" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bassline" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="Underground dance music |z Great Britain" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Batucada" lcgft1="Sambas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bayou Funk" lcgft1="Funk (Music)" lcgft2="Soul music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Beat" lcgft1="Alternative rock music" lcgft2=""
+        lcsh1="Rock music |z Great Britain" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Beatbox" lcgft1="Beatboxing" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Beatdown" lcgft1="House music" lcgft2="Techno (Music)"
+        lcsh1="Underground dance music |z Michigan |z Detroit" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Beguine" lcgft1="Beguines (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Berlin-School" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Bhangra" lcgft1="Bhangra (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Big Band" lcgft1="Jazz" lcgft2="" lcsh1="Big bands" lcsh2=""
+        lcmpt="big band"/>
+    <pair discogs_term="Big Beat" lcgft1="Techno (Music)" lcgft2="House music" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Black Metal" lcgft1="Black metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Bluegrass" lcgft1="Bluegrass music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Blues Rock" lcgft1="Blues-rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bolero" lcgft1="Boleros (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bollywood" lcgft1="Motion picture music" lcgft2="Popular music"
+        lcsh1="Motion picture industry |z India" lcsh2="Popular music |z India" lcmpt=""/>
+    <pair discogs_term="Bongo Flava" lcgft1="Rap (Music)" lcgft2="" lcsh1="Rap (Music) |z Tanzania"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Boogaloo" lcgft1="Boogaloos (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Boogie" lcgft1="Boogie woogie (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Boogie Woogie" lcgft1="Boogie woogie (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Boom Bap" lcgft1="Rap (Music)" lcgft2=""
+        lcsh1="Rap (Music) |z United States" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bop" lcgft1="Bop (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bossa Nova" lcgft1="Bossa nova (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bossanova" lcgft1="Bossa nova (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Bounce" lcgft1="Bounce (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Brass Band" lcgft1="" lcgft2="" lcsh1="Brass band music" lcsh2=""
+        lcmpt="brass band"/>
+    <pair discogs_term="Breakbeat" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Breakcore" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Breaks" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Brit Pop" lcgft1="Popular music" lcgft2=""
+        lcsh1="Popular music |z Great Britain" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Britcore" lcgft1="Rap (Music)" lcgft2=""
+        lcsh1="Rap (Music) |z Great Britain" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Broken Beat" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Cajun" lcgft1="Cajun music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Calypso" lcgft1="Calypso (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Cambodian Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z Cambodia"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Canzone Napoletana" lcgft1="Villanelle (Songs)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Cape Jazz" lcgft1="Jazz" lcgft2="" lcsh1="Jazz |z South Africa" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Carnatic" lcgft1="Carnatic music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Celtic" lcgft1="Celtic music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Cha-Cha" lcgft1="Cha-chas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Chanson" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z France"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Charanga" lcgft1="Latin pop" lcgft2="" lcsh1="Charanga" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Chicago Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Blues (Music) |z Chicago (Ill.)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Chinese Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z China"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Chiptune" lcgft1="Electronica (Music)" lcgft2="" lcsh1="Computer music"
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Classic Rock" lcgft1="Rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Classical" lcgft1="Art music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Comedy" lcgft1="Humor" lcgft2="Sound recordings" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Compas" lcgft1="Merengues (Music)" lcgft2="" lcsh1="Dance music |z Haiti"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Conjunto" lcgft1="Norteño (Music) " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Conscious" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Contemporary" lcgft1="Art music" lcgft2="" lcsh1="Music |y 20th century"
+        lcsh2="Music |y 21st century" lcmpt=""/>
+    <pair discogs_term="Contemporary Jazz" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Contemporary R&amp;B" lcgft1="Rhythm and blues music" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Cool Jazz" lcgft1="Cool jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Copla" lcgft1="Coplas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Corrido" lcgft1="Corridos (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Country" lcgft1="Country music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Country Blues" lcgft1="Blues (Music)" lcgft2="Country music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Country Rock" lcgft1="Country rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Crunk" lcgft1="Crunk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Crust" lcgft1="Alternative metal (Music) " lcgft2="Punk rock music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Cuatro" lcgft1="Latin pop" lcgft2="" lcsh1="" lcsh2="" lcmpt="cuatro"/>
+    <pair discogs_term="Cubano" lcgft1="Latin pop" lcgft2="" lcsh1="Popular music |z Cuba" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Cumbia" lcgft1="Cumbia (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Cut-up/DJ" lcgft1="Remixes (Music)" lcgft2="Excerpts" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Dancehall" lcgft1="Dancehall (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Dance-pop" lcgft1="Electronica (Music)" lcgft2="Dance music" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Danzon" lcgft1="Danzones (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Dark Ambient" lcgft1="Electronica (Music)"
+        lcgft2="Ambient music (Electronica)" lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Darkwave" lcgft1="Darkwave (Music)" lcgft2="Electronica (Music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Death Metal" lcgft1="Death metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Deathrock" lcgft1="Punk rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Deep House" lcgft1="House music" lcgft2="Ambient music (Electronica)"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Delta Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Blues (Music) |z Delta (Miss. : Region)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Descarga" lcgft1="Latin jazz" lcgft2="Popular music" lcsh1="Jazz |z Cuba"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Dialogue" lcgft1="Sound recordings" lcgft2="" lcsh1="" lcsh2="Dialogues"
+        lcmpt=""/>
+    <pair discogs_term="Disco" lcgft1="Disco (Music)" lcgft2="Electronica (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Disco" lcgft1="Disco (Music)" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Dixieland" lcgft1="Dixieland music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="DJ Battle Tool" lcgft1="Remixes (Music)" lcgft2="Excerpts" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Donk" lcgft1="Electronica (Music)" lcgft2="Underground dance music" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Doo Wop" lcgft1="Doo-wop" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Doom Metal" lcgft1="Doom metal (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Doomcore" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Downtempo" lcgft1="Ambient music (Electronica)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Drone" lcgft1="Electronica (Music)" lcgft2="Ambient music (Electronica)"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Drum n Bass" lcgft1="Jungle (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Dub" lcgft1="Dub (Music)" lcgft2="Electronica (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Dub" lcgft1="Dub (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Dub Poetry" lcgft1="Dub (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Dub Techno" lcgft1="Techno (Music)" lcgft2="Dub (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Dubstep" lcgft1="Dubstep (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Early" lcgft1="Art music" lcgft2="" lcsh1="Music |y 500-1400" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="East Coast Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Blues (Music) |z Atlantic Coast (North America)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Easy Listening" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="EBM" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Education" lcgft1="Instructional and educational works"
+        lcgft2="Sound recordings" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Educational" lcgft1="Children's sound recordings" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Electric Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Electric guitar music (Blues)" lcsh2="" lcmpt="electric guitar"/>
+    <pair discogs_term="Electro" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Electro" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Electro House" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Electroclash" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Emo" lcgft1="Emo (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Enka" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Japan"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Éntekhno" lcgft1="Popular" lcgft2="" lcsh1="Popular music |z Greece"
+        lcsh2="Instrumental music |z Greece" lcmpt=""/>
+    <pair discogs_term="Ethereal" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Euro House" lcgft1="Electronica (Music)" lcgft2="Dance music" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Eurobeat" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="Underground dance music |z Great Britain" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Eurodance" lcgft1="Electronica (Music)" lcgft2="Dance music"
+        lcsh1="Dance music |z Europe" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Euro-Disco" lcgft1="Electronica (Music)" lcgft2="Disco (Music)"
+        lcsh1="Dance music |z Europe" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Europop" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Europe"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Experimental" lcgft1="Electronica (Music)" lcgft2=""
+        lcsh1="Avant-garde (Music)" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Experimental" lcgft1="Alternative rock music" lcgft2=""
+        lcsh1="Avant-garde (Music)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Fado" lcgft1="Fados" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Favela Funk" lcgft1="Dance music" lcgft2="Funk (Music)"
+        lcsh1="Rap (Music) |z Brazil" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Field Recording" lcgft1="Field recordings" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Flamenco" lcgft1="Flamenco music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Folk" lcgft1="Folk music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Folk Metal" lcgft1="Alternative metal (Music) " lcgft2="Folk music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Folk Rock" lcgft1="Folk-rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Forró" lcgft1="Forró (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Free Funk" lcgft1="Funk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Free Improvisation" lcgft1="Jazz" lcgft2="" lcsh1="Improvisation (Music)"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Free Jazz" lcgft1="Free jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Freestyle" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Funk" lcgft1="Funk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Funk Metal" lcgft1="Thrash metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Fusion" lcgft1="Jazz-rock (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Future Jazz" lcgft1="Nu jazz" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Gabber" lcgft1="Gabba (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Gagaku" lcgft1="Gagaku  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Gamelan" lcgft1="Folk music" lcgft2="" lcsh1="Folk music |z Indonesia"
+        lcsh2="Gamelan music" lcmpt="Gamelan"/>
+    <pair discogs_term="Gangsta" lcgft1="Gangsta rap (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Garage House" lcgft1="House music" lcgft2="Dance music" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Garage Rock" lcgft1="Garage rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="G-Funk" lcgft1="Gangsta rap (Music)" lcgft2="Funk (Music)" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Ghetto" lcgft1="Ghetto tech (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Ghetto House" lcgft1="Ghettotech (Music)" lcgft2="House music" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Ghettotech" lcgft1="Ghettotech (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Glam" lcgft1="Alternative rock music" lcgft2="" lcsh1="Glam rock music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Glitch" lcgft1="Glitch music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Goa Trance" lcgft1="Trance (House music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Gogo" lcgft1="Funk (Music)" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Go-Go" lcgft1="Go-go (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Gospel" lcgft1="Gospel music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Gospel" lcgft1="Gospel music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Goth Rock" lcgft1="Gothic rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Gothic Metal" lcgft1="Gothic rock music" lcgft2="Alternative metal (Music) "
+        lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Grime" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="Underground dance music |z Great Britain" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Grime" lcgft1="Rap (Music)" lcgft2="Underground dance music"
+        lcsh1="Underground dance music |z Great Britain" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Grindcore" lcgft1="Rock music" lcgft2="" lcsh1="Grindcore (Music)" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Griot" lcgft1="Folk music" lcgft2="" lcsh1="Griots |v Music" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Grunge" lcgft1="Grunge music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Guaguancó" lcgft1="Guaguancós (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Guaracha" lcgft1="Guarachas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Gypsy Jazz" lcgft1="Jazz" lcgft2="" lcsh1="Romanies |v Music" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Happy Hardcore" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hard Bop" lcgft1="Jazz" lcgft2="Bop (Music)" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hard House" lcgft1="House music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hard Rock" lcgft1="Heavy metal (Music)" lcgft2="Alternative rock music"
+        lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hard Techno" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hard Trance" lcgft1="Trance (House music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hardcore" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hardcore" lcgft1="Hardcore (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hardcore Rap (Music)" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Hardstyle" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Harmonica Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Harmonica music (Blues)" lcsh2="" lcmpt="harmonica"/>
+    <pair discogs_term="Heavy Metal" lcgft1="Heavy metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Hi NRG" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Highlife" lcgft1="Highlife (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hindustani" lcgft1="Hindustani music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hip Hop" lcgft1="Electronica (Music)" lcgft2="Rap (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hip-House" lcgft1="House music" lcgft2="Rap (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Hiplife" lcgft1="Rap (Music)" lcgft2="Popular music"
+        lcsh1="Rap (Music) |z Ghana" lcsh2="Popular music |z Ghana" lcmpt=""/>
+    <pair discogs_term="Honky Tonk" lcgft1="Honky-tonk music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Horrorcore" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="House" lcgft1="House music" lcgft2="" lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Hyphy" lcgft1="Rap (Music)" lcgft2="Underground dance music"
+        lcsh1="Rap (Music) |z San Francisco Bay Area (Calif.)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="IDM" lcgft1="Intelligent dance music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Illbient" lcgft1="Electronica (Music)" lcgft2="Ambient music (Electronica)"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Impressionist" lcgft1="Art music" lcgft2="" lcsh1="Impressionism (Music)"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Indian Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z India"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Indie Pop" lcgft1="Alternative rock music" lcgft2="Popular music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Indie Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Industrial" lcgft1="Industrial music" lcgft2="Electronica (Music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Industrial" lcgft1="Industrial music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Instrumental" lcgft1="Rap (Music)" lcgft2="" lcsh1="Instrumental music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Interview" lcgft1="Sound recordings" lcgft2="" lcsh1="Interviews" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Italo House" lcgft1="House music" lcgft2="Disco (Music)"
+        lcsh1="Underground dance music |z Italy" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Italodance" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="Electronica (Music) |z Italy" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Italo-Disco" lcgft1="Electronica (Music)" lcgft2="Disco (Music)"
+        lcsh1="Electronica (Music) |z Italy" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Jazzdance" lcgft1="Electronica (Music)" lcgft2="Jazz " lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Jazz-Funk" lcgft1="Jazz" lcgft2="Funk (Music)" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Jazz-Rock" lcgft1="Jazz-rock (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Jazzy Rap (Music)" lcgft1="Rap (Music)" lcgft2="Jazz " lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Jibaro" lcgft1="Folk music" lcgft2="" lcsh1="Shuar Indians |v Music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="J-pop" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Japan"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Juke" lcgft1="Ghettotech (Music)" lcgft2="House music" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Jump Blues" lcgft1="Blues (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="brass ensemble"/>
+    <pair discogs_term="Jumpstyle" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Jungle" lcgft1="Jungle (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Junkanoo" lcgft1="Reggae music" lcgft2=""
+        lcsh1="Jonkonnu (Festival) |v Music" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Karaoke" lcgft1="Karaoke" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Kaseko" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Suriname"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Klasik" lcgft1="Art music" lcgft2="" lcsh1="Music |z Afghanistan" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Klezmer" lcgft1="Klezmer music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Korean Court Music" lcgft1="Art music" lcgft2="" lcsh1="Music |z Korea"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Krautrock" lcgft1="Alternative rock music" lcgft2=""
+        lcsh1="Krautrock (Music)" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Kwaito" lcgft1="Electronica (Music)" lcgft2="Remixes (Music)"
+        lcsh1="Underground dance music |z South Africa" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Laïkó" lcgft1="Folk music" lcgft2="" lcsh1="Folk music |z Greece"
+        lcsh2="Popular music |z Greece" lcmpt=""/>
+    <pair discogs_term="Lambada" lcgft1="Dance music" lcgft2="Latin pop"
+        lcsh1="Dance music |z Brazil" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Lao Music" lcgft1="Folk music" lcgft2="" lcsh1="Music |z Laos" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Latin" lcgft1="Electronica (Music)" lcgft2="Latin pop" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Latin Jazz" lcgft1="Latin jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Leftfield" lcgft1="Electronica (Music)" lcgft2=""
+        lcsh1="Avant-garde (Music)" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Lo-Fi" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Louisiana Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Blues (Music) |z Louisiana" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Lounge" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Lovers Rock" lcgft1="Reggae music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Luk Thung" lcgft1="Folk music" lcgft2="" lcsh1="Folk music |z Thailand"
+        lcsh2="Popular music |z Thailand" lcmpt=""/>
+    <pair discogs_term="Makina" lcgft1="Techno (Music)" lcgft2="Electronica (Music)"
+        lcsh1="Techno music |z Spain" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Mambo" lcgft1="Mambos (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Marches" lcgft1="Marches (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Mariachi" lcgft1="Mariachi (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Marimba" lcgft1="Popular music" lcgft2="" lcsh1="Marimba music" lcsh2=""
+        lcmpt="marimba"/>
+    <pair discogs_term="Math Rock" lcgft1="Math rock (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Medieval" lcgft1="Art music" lcgft2="" lcsh1="Music |y 500-1400" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Melodic Hardcore" lcgft1="Hardcore (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Mento" lcgft1="Reggae music" lcgft2="" lcsh1="Mentos (Music)" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Merengue" lcgft1="Merengues (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Metalcore" lcgft1="Extreme metal (Music)" lcgft2="Hardcore (Music)" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Miami Bass" lcgft1="Rap (Music)" lcgft2=""
+        lcsh1="Rap (Music) |z United States" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Military" lcgft1="Military music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Minimal" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Minimal Techno" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Mizrahi" lcgft1="Folk music" lcgft2="" lcsh1="Jews, Oriental |v Music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Mod" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Modal" lcgft1="Jazz" lcgft2="" lcsh1="Musical intervals and scales" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Modern" lcgft1="Art music" lcgft2="" lcsh1="Modernism (Music)" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Modern Classical" lcgft1="Electronica (Music)" lcgft2="Art music" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Modern Electric Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Electric guitar music (Blues)" lcsh2="" lcmpt="electric guitar"/>
+    <pair discogs_term="Monolog" lcgft1="Sound recordings" lcgft2="" lcsh1="Drama"
+        lcsh2="Monologues" lcmpt=""/>
+    <pair discogs_term="Motswako" lcgft1="Rap (Music)" lcgft2="" lcsh1="Rap (Music) |z South Africa"
+        lcsh2="Rap (Music) |z Botswana" lcmpt=""/>
+    <pair discogs_term="Mouth Music" lcgft1="Mouth music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Movie Effects" lcgft1="Sound effects recordings" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="MPB" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Brazil"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Mugham" lcgft1="Folk music" lcgft2="" lcsh1="Maqām   " lcsh2="" lcmpt=""/>
+    <pair discogs_term="Music Hall" lcgft1="Popular music" lcgft2=""
+        lcsh1="Popular music |z England" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Musical" lcgft1="Musicals" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Musique Concrète" lcgft1="Musique concrète" lcgft2="Electronica (Music)"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Neo Soul" lcgft1="Soul music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Neo-Classical" lcgft1="Art music" lcgft2="" lcsh1="Neoclassicism (Music)"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Neofolk" lcgft1="Electronica (Music)" lcgft2="Folk music"
+        lcsh1="Avant-garde (Music)" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Neofolk" lcgft1="Folk music" lcgft2="" lcsh1="Avant-garde (Music)" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Neo-Romantic" lcgft1="Art music" lcgft2="" lcsh1="Neoromanticism (Music)"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="New Age" lcgft1="New Age music" lcgft2="Electronica (Music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="New Beat" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="New Jack Swing" lcgft1="Funk (Music)" lcgft2="Popular music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="New Wave" lcgft1="New wave music " lcgft2="Electronica (Music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="New Wave" lcgft1="New wave music " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="No Wave" lcgft1="No wave (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Noise" lcgft1="Noise music" lcgft2="Electronica (Music)" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Noise" lcgft1="Noise music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Nordic" lcgft1="Folk music" lcgft2="" lcsh1="Folk music |z Norway" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Norteño" lcgft1="Norteño (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Novelty" lcgft1="Popular music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Nu Metal" lcgft1="Alternative metal (Music) " lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Nueva Cancion" lcgft1="Folk music" lcgft2="Popular music"
+        lcsh1="Folk music |z Latin America" lcsh2="Political ballads and songs |z South America"
+        lcmpt=""/>
+    <pair discogs_term="Nueva Trova" lcgft1="Folk music" lcgft2="Popular music"
+        lcsh1="Folk music |z Cuba" lcsh2="Political ballads and songs |z South America" lcmpt=""/>
+    <pair discogs_term="Nursery Rhymes" lcgft1="Children's sound recordings" lcgft2=""
+        lcsh1="Nursery rhymes |v Juvenile sound recordings" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Oi" lcgft1="Oi music " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Opera" lcgft1="Operas" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Operetta" lcgft1="Operas" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ottoman Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z Turkey"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Overtone Singing" lcgft1="Throat singing" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="P.Funk" lcgft1="Funk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Pachanga" lcgft1="Pachangas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Pacific" lcgft1="Folk music" lcgft2=""
+        lcsh1="Folk music |z Islands of the Pacific" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Parody" lcgft1="Humorous music" lcgft2="Popular music"
+        lcsh1="Parody in music" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Parody" lcgft1="Humorous music" lcgft2="Rock music" lcsh1="Parody in music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Persian Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z Iran"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Philippine Classical" lcgft1="Art music" lcgft2=""
+        lcsh1="Music |z Philippines" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Piano Blues" lcgft1="Blues (Music)" lcgft2="" lcsh1="Piano music (Blues)"
+        lcsh2="" lcmpt="piano"/>
+    <pair discogs_term="Piedmont Blues" lcgft1="Blues (Music)" lcgft2=""
+        lcsh1="Blues (Music) |z Atlantic Coast (North America)"
+        lcsh2="Blues (Music) |z Southern States" lcmpt=""/>
+    <pair discogs_term="Piobaireachd" lcgft1="Pibrochs  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Pipe &amp; Drum" lcgft1="Military music" lcgft2="" lcsh1="Pipe band music"
+        lcsh2="" lcmpt="pipe band"/>
+    <pair discogs_term="Plena" lcgft1="Folk music" lcgft2="Dance music"
+        lcsh1="Dance music |z Puerto Rico" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Poetry" lcgft1="Poetry readings (Sound recordings)" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Political" lcgft1="Sound recordings" lcgft2="" lcsh1="Political science"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Polka" lcgft1="Polkas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Pop Punk" lcgft1="Punk rock music" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Pop Rap" lcgft1="Rap (Music)" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Pop Rock" lcgft1="Alternative rock music" lcgft2="Popular music" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Post Bop" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Post Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Post-Modern" lcgft1="Art music" lcgft2="" lcsh1="Music"
+        lcsh2="Postmodernism" lcmpt=""/>
+    <pair discogs_term="Post-Punk" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Power Electronics" lcgft1="Electronica (Music)" lcgft2="Noise music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Power Metal" lcgft1="Power metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Power Pop" lcgft1="Popular music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Prog Rock" lcgft1="Progressive rock (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Progressive House" lcgft1="House music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Progressive Trance" lcgft1="Trance (House music)" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Promotional" lcgft1="Sound recordings" lcgft2="" lcsh1="Advertising"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Psychedelic" lcgft1="Funk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Psychedelic Rock" lcgft1="Psychedelic rock music" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Psychobilly" lcgft1="Rockabilly music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Psy-Trance" lcgft1="Trance (House music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Pub Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Public Service Announcement" lcgft1="Sound recordings" lcgft2=""
+        lcsh1="Advertising, Public service" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Punk" lcgft1="Punk rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Quechua" lcgft1="Folk music" lcgft2="" lcsh1="Quechua Indians |v Music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Radioplay" lcgft1="Radio programs" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ragga" lcgft1="Ragga (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ragga HipHop" lcgft1="Ragga (Music)" lcgft2="Rap (Music)" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Ragtime" lcgft1="Ragtime music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Raï" lcgft1="Rai (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ranchera" lcgft1="Folk music" lcgft2="" lcsh1="Rancheras |v Music" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Rapso" lcgft1="Rapso  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rebetiko" lcgft1="Rebetika  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Reggae" lcgft1="Reggae music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Reggae Gospel" lcgft1="Reggae music" lcgft2="Gospel music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Reggae-Pop" lcgft1="Reggae music" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Reggaeton" lcgft1="Latin pop" lcgft2="Rap (Music)" lcsh1="Reggaetón   "
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Religious" lcgft1="Sound recordings" lcgft2="" lcsh1="Religion" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Renaissance" lcgft1="Art music" lcgft2="" lcsh1="Music |y 15th century"
+        lcsh2="Music |y 16th century" lcmpt=""/>
+    <pair discogs_term="Rhythm &amp; Blues" lcgft1="Blues (Music)" lcgft2="Rhythm and blues music"
+        lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rhythm &amp; Blues" lcgft1="Rhythm and blues music" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rhythmic Noise" lcgft1="Noise music" lcgft2="Electronica (Music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="RnB/Swing" lcgft1="Rhythm and blues music" lcgft2="Swing (Music)" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rock &amp; Roll" lcgft1="Rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rockabilly" lcgft1="Rockabilly music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rocksteady" lcgft1="Rocksteady (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Romani" lcgft1="Folk music" lcgft2="" lcsh1="Romanies |v Music" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Romantic" lcgft1="Art music" lcgft2="" lcsh1="Music |y 19th century"
+        lcsh2="Romanticism in music" lcmpt=""/>
+    <pair discogs_term="Roots Reggae" lcgft1="Reggae music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rumba" lcgft1="Rumbas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rune Singing" lcgft1="Rune songs" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Salsa" lcgft1="Salsa (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Samba" lcgft1="Sambas (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Sámi Music" lcgft1="Folk music" lcgft2=""
+        lcsh1="Sami (European people) |v Music" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Schlager" lcgft1="Popular music" lcgft2="" lcsh1="Popular music |z Europe"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Schranz" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Score" lcgft1="Motion picture music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Screw" lcgft1="Remixes (Music)" lcgft2="Dance music" lcsh1="" lcsh2=""
+        lcmpt="phonograph turntable"/>
+    <pair discogs_term="Sephardic" lcgft1="Folk music" lcgft2="" lcsh1="Sephardim |v Music" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Serial" lcgft1="Art music" lcgft2="" lcsh1="Serialism" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Sermon" lcgft1="Sound recordings" lcgft2="" lcsh1="Sermons" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Shoegaze" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Ska" lcgft1="Ska (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Ska" lcgft1="Ska (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Skiffle" lcgft1="Skiffle  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Skweee" lcgft1="Electronica (Music)" lcgft2="" lcsh1="Computer music"
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Sludge Metal" lcgft1="Sludge metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Smooth Jazz" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soca" lcgft1="Soca (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soft Rock" lcgft1="Folk-rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Son" lcgft1="Sones  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Sonero" lcgft1="Sones  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soukous" lcgft1="Soukous (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soul" lcgft1="Soul music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soul-Jazz" lcgft1="Jazz" lcgft2="Soul music" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Soundtrack" lcgft1="Motion picture music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Southern Rock" lcgft1="Rock music" lcgft2=""
+        lcsh1="Southern states |v Music" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Space Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Space-Age" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Spaza" lcgft1="Rap (Music)" lcgft2="" lcsh1="Rap (Music) |z South Africa"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Special Effects" lcgft1="Sound effects recordings" lcgft2="" lcsh1=""
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Speech" lcgft1="Sound recordings" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Speed Garage" lcgft1="Electronica (Music)" lcgft2="Underground dance music"
+        lcsh1="" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Speed Metal" lcgft1="Thrash metal (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Speedcore" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Spoken Word" lcgft1="Sound recordings" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Steel Band" lcgft1="Reggae music" lcgft2="" lcsh1="Steel band music"
+        lcsh2="" lcmpt="steel band"/>
+    <pair discogs_term="Stoner Rock" lcgft1="Alternative rock music" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Story" lcgft1="Children's audiobooks" lcgft2=""
+        lcsh1="Children's stories |v Juvenile sound recordings" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Surf" lcgft1="Surf music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Swamp Pop" lcgft1="Swamp pop music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Swing" lcgft1="Swing (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Swingbeat" lcgft1="Funk (Music)" lcgft2="Popular music" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Symphonic Rock" lcgft1="Progressive rock (Music)"
+        lcgft2="Alternative rock music" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Synth-pop" lcgft1="Synthpop (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Tango" lcgft1="Tangos (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Tech House" lcgft1="Techno (Music)" lcgft2="House music" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Tech Trance" lcgft1="Techno (Music)" lcgft2="Trance (House music)" lcsh1=""
+        lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Technical" lcgft1="Sound recordings" lcgft2="" lcsh1="Technology" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Techno" lcgft1="Techno (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Tejano" lcgft1="Tejano music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Texas Blues" lcgft1="Blues (Music)" lcgft2="" lcsh1="Blues (Music) |z Texas"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Thai Classical" lcgft1="Art music" lcgft2="" lcsh1="Music |z Thailand"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Theme" lcgft1="Television music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Therapy" lcgft1="Sound recordings" lcgft2=""
+        lcsh1="Sound recordings |x Therapeutic use" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Thrash" lcgft1="Thrash metal (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Thug Rap" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Timba" lcgft1="Timba (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Trance" lcgft1="Trance (House music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Trap" lcgft1="Rap (Music)" lcgft2="" lcsh1="Rap (Music) |z Southern States"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Tribal" lcgft1="Electronica (Music)" lcgft2="" lcsh1="World music" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Tribal House" lcgft1="House music" lcgft2="" lcsh1="World music" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Trip Hop" lcgft1="Trip-hop (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Trip Hop" lcgft1="Trip-hop (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Trova" lcgft1="Folk music" lcgft2="Popular music" lcsh1="Trovas |v Music"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="Turntablism" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="phonograph turntable"/>
+    <pair discogs_term="Twelve-tone" lcgft1="Art music" lcgft2="" lcsh1="Twelve-tone system"
+        lcsh2="" lcmpt=""/>
+    <pair discogs_term="UK Garage" lcgft1="Electronica (Music)" lcgft2=""
+        lcsh1="Electronica (Music) |z Great Britain" lcsh2="" lcmpt="electronics"/>
+    <pair discogs_term="Vallenato" lcgft1="Vallenato  " lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Vaporwave" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Viking Metal" lcgft1="Heavy metal (Music)"
+        lcgft2="Alternative metal (Music)" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Vocal" lcgft1="Popular music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Witch House" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt="electronics"/>
+    <pair discogs_term="Zouk" lcgft1="Zouk (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Zydeco" lcgft1="Zydeco music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Blues" lcgft1="Blues (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Brass &amp; Military" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Children's" lcgft1="Children's sound recordings" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Classical" lcgft1="Art music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Electronic" lcgft1="Electronica (Music)" lcgft2="" lcsh1="" lcsh2=""
+        lcmpt=""/>
+    <pair discogs_term="Folk, World, &amp; Country" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Funk / Soul" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Hip Hop" lcgft1="Rap (Music)" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Jazz" lcgft1="Jazz" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Latin" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Non-Music" lcgft1="Sound recordings" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Pop" lcgft1="Popular music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Reggae" lcgft1="Reggae music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Rock" lcgft1="Rock music" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+    <pair discogs_term="Stage &amp; Screen" lcgft1="" lcgft2="" lcsh1="" lcsh2="" lcmpt=""/>
+</data>
