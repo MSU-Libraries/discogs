@@ -332,7 +332,7 @@ class DiscogsData():
         self.styles = {}
 
         dapi = DiscogsApi()
-        self.releases = dapi.GetCollection(self.username, folder_id=self.folder_id)
+        self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
         i = 0
         for release in self.releases:
             #print release["basic_information"]["artists"][0]["name"]
