@@ -1,7 +1,7 @@
-Discogs API
-===========
+## Discogs API
 
-Scripts for accessing discogs API and processing data that's returned.
+
+This repository contains scripts for accessing the discogs API and doing some processing on the data that's returned.
 
 For more information about the Discogs API:
 
@@ -14,16 +14,40 @@ Non built-in libraries used by this module:
 [FormatObject](https://git.lib.msu.edu/higgi135/formatobject/tree/master)
 
 
-Getting Started
---------------------
+### Getting Started
 
-Scripts currently in place to return a user's collection; compiles "styles" for all releases; build network graph and output results in gephi or D3 format.
 
-To work with this library, first clone the repository and change into its `py` directory:
+Scripts are currently in place to provide such functions as: 
 
-	cd discogs/py
++ return a given user's collection in several formats 
++ compile "styles" for all releases 
++ build network graph, and output results in gephi or D3 format.
++ transfer releases between collections (developer key required)
++ add new releases to a given collection (developer key required)
+
+### Running Code
+
+To work with this library, first clone the repository and change into its directory:
+
+	cd discogs
 
 Open Python (or iPython) shell:
+
+    ipython
+
+In addition, some code can be explored in an ipython notebook: Open `discogs.ipynb` in an [ipython notebook server](http://ipython.org/notebook.html) and explore from there.
+
+#### Getting All Releases in XML Format
+
+To access all releases for a given user, run the following code:
+
+    from discogs import DiscogsData
+    dd = DiscogsData()
+    dd.ReturnXmlReleases(username="[discogs_user]", folder_id="0", output_path="[path/to/store/data]")
+
+To further transform these generic XML files into MARC format, use `xslt/discogs2marc.xsl`.
+
+#### Accessing Discogs 'Style' Content
 
     from discogs import DiscogsData
     dd = DiscogsData()
