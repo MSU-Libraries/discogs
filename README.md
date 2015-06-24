@@ -1,21 +1,16 @@
 ## Discogs API
 
-
 This repository contains scripts for accessing the discogs API and doing some processing on the data that's returned.
 
-For more information about the Discogs API:
-
-[Discogs API documentation](http://www.discogs.com/developers/)
+For more information about the Discogs API: [Discogs API documentation](http://www.discogs.com/developers/)
 
 Non built-in libraries used by this module:
 
-[Networkx Library](http://networkx.github.io/documentation/latest/install.html)
-
-[FormatObject](https://git.lib.msu.edu/higgi135/formatobject/tree/master)
++ [Networkx Library](http://networkx.github.io/documentation/latest/install.html)
++ [FormatObject](https://git.lib.msu.edu/higgi135/formatobject/tree/master)
 
 
 ### Getting Started
-
 
 Scripts are currently in place to provide such functions as: 
 
@@ -33,9 +28,10 @@ To work with this library, first clone the repository and change into its direct
 
 Open Python (or iPython) shell:
 
+    python
     ipython
 
-In addition, some code can be explored in an ipython notebook: Open `discogs.ipynb` in an [ipython notebook server](http://ipython.org/notebook.html) and explore from there.
+Now you are ready to begin using python commands, including calling the functions included in this repository. (In addition, some code can be explored in an ipython notebook: Open `discogs.ipynb` in an [ipython notebook server](http://ipython.org/notebook.html) and explore from there.)
 
 #### Getting All Releases in XML Format
 
@@ -76,7 +72,4 @@ Or, to save other computed data as JSON for later use:
     json_object.SaveAsJson(dd.styles, "/path/to/new/file")
     json_object.SaveAsJson(dd.styles_by_release, "/path/to/new/file")
 
-`dd.styles` is a dictionary object containing all styles along with counts for each. `dd.styles_by_release` is a list of lists, where each sub-list contains an individual release's set of styles. 
-
-
-
+`dd.styles` is a dictionary object containing all styles along with counts for each. `dd.styles_by_release` is a list of lists, where each sub-list contains an individual release's set of styles.
