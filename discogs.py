@@ -116,7 +116,7 @@ class DiscogsApi():
         self.url = self.build_url(self.collection_extension)
         self.collection = self.open_url(self.url)
         self.releases = self.collection["releases"]
-        print "{:=^30}".format("Getting Collection")
+        print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
         if self.collection["pagination"]["pages"] > 1:
             for i in range(2, self.collection["pagination"]["pages"]+1, 1):
                 self.add_param("page", i)
@@ -179,6 +179,55 @@ class DiscogsData():
             json_object = FormatObject()
             self.data = json_object.LoadJson(self.path_to_data)
 
+    def compare_users(self, users):
+        """
+        Check for shared releases and wantlist overlaps.
+
+        Positional arguments:
+        users (list) -- list of users to compare_users
+        """
+        self.releases_by_user = {}
+        self.master_ids = {}
+        for user in users:
+            self._load_collection(user)
+            self.master_ids[user] = {"master_ids": [], "release_ids": []}
+            for release in self.releases_by_user[user]:
+                if "master_id" in release:  
+                    self.master_ids[user]["master_ids"].append(release["master_id"])
+                else:
+                    self.master_ids[user]["release_ids"].append(release["id"])
+
+        self._compare_id_lists()
+        for record in self.releases_by_user[users[0]]:
+            if record["id"] in self.union_ids:
+                print "{0} -- {1}".format(record["artists"][0]["name"], record["title"])
+            if "master_id" in record:
+                if record["master_id"] in self.union_masters:
+                    print "{0} -- {1}".format(record["artists"][0]["name"], record["title"])
+
+    def _load_collection(self, user):
+        """
+        Load user collection from JSON file or by querying discogs.
+
+        Positional arguments:
+        user (str) -- user name to load collection for.
+        """
+        user_collection_path = "output/full_collections/{0}_collection.json".format(user)
+        if os.path.exists(user_collection_path):
+            self.releases_by_user[user] = json.load(open(user_collection_path, "r"))
+
+        else:
+            self.releases_by_user[user] = self.get_full_collection(user)
+
+
+    def _compare_id_lists(self):
+        """Check ID lists for all users to find common IDs."""
+        setlist_master = [set(self.master_ids[id_list]["master_ids"]) for id_list in self.master_ids]
+        setlist_release = [set(self.master_ids[id_list]["release_ids"]) for id_list in self.master_ids]
+        self.union_ids = set.intersection(*setlist_release)
+        self.union_masters = set.intersection(*setlist_master)
+
+
     def ReturnXmlReleases(self, username="username", folder_id="folder_id", output_path="/"):
         """
         Special function to access release data and transform it into XML.
@@ -199,7 +248,7 @@ class DiscogsData():
 
             sys.stdout.write("{:=^30}\r".format(i+1))
             sys.stdout.flush()
-            
+
             a = FormatObject()
             xml = a.DictToXml(release_data)
             full_path = os.path.join(output_path, str(r_id)+".xml")
@@ -319,7 +368,7 @@ class DiscogsData():
             else:
                 self.styles[s] = 1
 
-    def GetFullCollection(self, username, folder_id="0"):
+    def get_full_collection(self, username, folder_id="0"):
         """
         Use discogs username to return full release data for storage, from a given folder.
         Most folders require authentication for access. Folder "0" is the "all" folder.
@@ -336,7 +385,7 @@ class DiscogsData():
         self.all_releases = []
         
         dapi = DiscogsApi()
-        self.releases = dapi.GetCollection(self.username, folder_id=self.folder_id)
+        self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
         i = 1
         for release in self.releases:
             #print release["basic_information"]["artists"][0]["name"]
@@ -350,9 +399,13 @@ class DiscogsData():
                 release_data = dapi.GetRelease(r_id)
                 self.all_releases.append(release_data)
 
-            sys.stdout.write("{:=^30}\r".format(i))
-            sys.stdout.flush()
+            #sys.stdout.write("{:=^30}\r".format(i))
+            #sys.stdout.flush()
+            print i
             i += 1
+
+        with open("output/full_collections/{0}_collection.json".format(username), "w") as f:
+            json.dump(self.all_releases, f)
 
         return self.all_releases
 
