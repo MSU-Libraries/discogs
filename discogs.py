@@ -31,7 +31,7 @@ Licensed under GNU General Public License (GPL) Version 2.
 """
 
 import urllib
-import urllib2
+import requests
 import json
 import os
 import sys
@@ -66,16 +66,16 @@ class DiscogsApi():
             data = urllib.urlencode(self.params)
             search_url = "?".join([url, data])
         else:
-            search_url = self.url
+            search_url = url
 
-        request = urllib2.Request(search_url)
-        request.add_header('User-Agent', self.user_agent)
+        print search_url
+        headers = {'User-agent': self.user_agent}
         if request_type == "POST":
-            response = urllib2.urlopen(request, data="")
+            response = requests.get(search_url)
         
         else:
-            response = urllib2.urlopen(request)
-        json_response = json.load(response)
+            response = requests.get(search_url)
+        json_response = response.json()
         time.sleep(2)
         return json_response
 
@@ -115,6 +115,7 @@ class DiscogsApi():
         self.collection_extension = "/users/{username}/collection/folders/{folder_id}/releases".format(username=username, folder_id=folder_id)
         self.url = self.build_url(self.collection_extension)
         self.collection = self.open_url(self.url)
+
         self.releases = self.collection["releases"]
         print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
         if self.collection["pagination"]["pages"] > 1:
