@@ -1,35 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
-COPYRIGHT © 2015
-MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES
-ALL RIGHTS RESERVED
- 
-PERMISSION IS GRANTED TO USE, COPY, CREATE DERIVATIVE WORKS AND REDISTRIBUTE
-THIS SOFTWARE AND SUCH DERIVATIVE WORKS FOR ANY PURPOSE, SO LONG AS THE NAME
-OF MICHIGAN STATE UNIVERSITY IS NOT USED IN ANY ADVERTISING OR PUBLICITY
-PERTAINING TO THE USE OR DISTRIBUTION OF THIS SOFTWARE WITHOUT SPECIFIC,
-WRITTEN PRIOR AUTHORIZATION.  IF THE ABOVE COPYRIGHT NOTICE OR ANY OTHER
-IDENTIFICATION OF MICHIGAN STATE UNIVERSITY IS INCLUDED IN ANY COPY OF ANY
-PORTION OF THIS SOFTWARE, THEN THE DISCLAIMER BELOW MUST ALSO BE INCLUDED.
- 
-THIS SOFTWARE IS PROVIDED AS IS, WITHOUT REPRESENTATION FROM MICHIGAN STATE
-UNIVERSITY AS TO ITS FITNESS FOR ANY PURPOSE, AND WITHOUT WARRANTY BY
-MICHIGAN STATE UNIVERSITY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
-WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE. THE MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES SHALL
-NOT BE LIABLE FOR ANY DAMAGES, INCLUDING SPECIAL, INDIRECT, INCIDENTAL, OR
-CONSEQUENTIAL DAMAGES, WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN
-CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS BEEN OR IS HEREAFTER
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
- 
-Code written by Devin Higgins
-2015
-(c) Michigan State University Board of Trustees
-Licensed under GNU General Public License (GPL) Version 2.
-"""
-
+"""Discogs interactions."""
 import urllib
 import requests
 import json
@@ -39,18 +8,18 @@ import time
 import ConfigParser
 from urlparse import urljoin
 import networkx as nx
-from pprint import pprint
+import codecs
 from itertools import combinations
 from formatobject.formatobject import FormatObject
-import networkx as nx
 from networkx.readwrite import json_graph
+from collections import Counter
 
 
 class DiscogsApi():
     """Class for interacting with Discogs API."""
-    
+
     def __init__(self, username=None):
-        """Establish base API url and provide arbitrary user agent name."""    
+        """Establish base API url and provide arbitrary user agent name."""
         self.base_url = "https://api.discogs.com"
         self.user_agent = "DevinHigginsMSULibraries/0.1"
         self.params = {}
@@ -69,16 +38,15 @@ class DiscogsApi():
             search_url = url
 
         print search_url
-        headers = {'User-agent': self.user_agent}
+        # headers = {'User-agent': self.user_agent}
         if request_type == "POST":
             response = requests.get(search_url)
-        
+
         else:
             response = requests.get(search_url)
         json_response = response.json()
         time.sleep(2)
         return json_response
-
 
     def add_param(self, key, value):
         """
@@ -88,17 +56,15 @@ class DiscogsApi():
         key (str) -- key to use in header, e.g. 'User-Agent'
         value (str) -- value to associated with the given key.
         """
-
         self.params[key] = value
 
     def clear_params(self):
         """Clear all current header parameters."""
-
         self.params = {}
 
     def get_collection(self, username, folder_id="0", per_page=100):
-        """
-        Use discogs username to return release data from given folder.
+        """Use discogs username to return release data from given folder.
+
         Most folders require authentication for access. Folder "0" is the "all" folder.
 
         Positional arguments:
@@ -108,15 +74,16 @@ class DiscogsApi():
         folder_id (str) -- The folder containing all releases (0) is the only one supported.
         per_page (int) -- The number of results to return per request. Max value is 100.
         """
-
         self.clear_params()
         self.add_param("per_page", per_page)
 
-        self.collection_extension = "/users/{username}/collection/folders/{folder_id}/releases".format(username=username, folder_id=folder_id)
+        self.collection_extension = "/users/{username}/collection/folders/{folder_id}/releases"\
+                                    .format(username=username, folder_id=folder_id)
         self.url = self.build_url(self.collection_extension)
         self.collection = self.open_url(self.url)
 
         self.releases = self.collection["releases"]
+        self.release_ids = []
         print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
         if self.collection["pagination"]["pages"] > 1:
             for i in range(2, self.collection["pagination"]["pages"]+1, 1):
@@ -124,6 +91,9 @@ class DiscogsApi():
                 collection = self.open_url(self.url)
                 for release in collection["releases"]:
                     self.releases.append(release)
+
+        for release in self.releases:
+            self.release_ids.append(release["id"])
 
         print "{:=^30} Releases".format(len(self.releases))
 
@@ -143,7 +113,6 @@ class DiscogsApi():
 
         return self.release
 
-
     def build_url(self, url_extension):
         """
         Combine base url and search extension.
@@ -153,7 +122,6 @@ class DiscogsApi():
         """
         return urljoin(self.base_url, url_extension)
 
-
     def _get_token(self):
         """Read config file and get user token."""
         config = ConfigParser.RawConfigParser()
@@ -161,18 +129,17 @@ class DiscogsApi():
         self.user_token = config.get(self.username, "user_token")
 
 
-
 class DiscogsData():
     """Class to process data accessed via the Discogs API."""
-    
+
     def __init__(self, path_to_data=None):
-        """
+        """Analyze collection data.
+
         If no data is provided as an argument here (JSON), data will be collected via API.
 
         Keyword arguments:
         path_to_data (str) -- Must be a valid path to a JSON file matching expected formatting.
         """
-        
         self.data = None
         self.co_graph = None
         self.path_to_data = path_to_data
@@ -193,7 +160,7 @@ class DiscogsData():
             self._load_collection(user)
             self.master_ids[user] = {"master_ids": [], "release_ids": []}
             for release in self.releases_by_user[user]:
-                if "master_id" in release:  
+                if "master_id" in release:
                     self.master_ids[user]["master_ids"].append(release["master_id"])
                 else:
                     self.master_ids[user]["release_ids"].append(release["id"])
@@ -220,43 +187,54 @@ class DiscogsData():
         else:
             self.releases_by_user[user] = self.get_full_collection(user)
 
-
     def _compare_id_lists(self):
         """Check ID lists for all users to find common IDs."""
-        setlist_master = [set(self.master_ids[id_list]["master_ids"]) for id_list in self.master_ids]
-        setlist_release = [set(self.master_ids[id_list]["release_ids"]) for id_list in self.master_ids]
+        setlist_master = [set(self.master_ids[id_list]["master_ids"])
+                          for id_list in self.master_ids]
+
+        setlist_release = [set(self.master_ids[id_list]["release_ids"])
+                           for id_list in self.master_ids]
+
         self.union_ids = set.intersection(*setlist_release)
         self.union_masters = set.intersection(*setlist_master)
 
-
-    def ReturnXmlReleases(self, username="username", folder_id="folder_id", output_path="/"):
-        """
-        Special function to access release data and transform it into XML.
+    def return_xml_releases(self, username="username", folder_id="folder_id",
+                            output_path="/", json_output=False):
+        """Special function to access release data and transform it into XML.
 
         Keyword arguments:
         username (str) -- Any valid discogs user name; no authentication required.
         folder_id (str) -- The folder containing all releases (0) is the only one supported.
         output_path (str) -- Location to save file(s) to; defaults to current directory.
         """
-
         self.username = username
         self.folder_id = folder_id
         dapi = DiscogsApi()
         self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
+        release_counter = Counter(dapi.release_ids)
+        print release_counter
         for i, release in enumerate(self.releases):
             r_id = release["id"]
-            release_data = dapi.GetRelease(r_id)
+            json_path = os.path.join(output_path, str(r_id)+".json")
+            xml_path = os.path.join(output_path,
+                                    str(r_id)+"-{0}.xml".format(release_counter[r_id]))
+            if not os.path.exists(json_path) and not os.path.exists(xml_path):
+                release_data = dapi.GetRelease(r_id)
+                if json_output:
+                    with codecs.open(json_path, "w", "utf-8") as json_file:
+                        json.dump(release_data, json_file, ensure_ascii=False)
 
-            sys.stdout.write("{:=^30}\r".format(i+1))
-            sys.stdout.flush()
+                sys.stdout.write("{:=^30}\r".format(i+1))
+                sys.stdout.flush()
 
-            a = FormatObject()
-            xml = a.DictToXml(release_data)
-            full_path = os.path.join(output_path, str(r_id)+".xml")
-            a.WriteFile(xml, full_path)
+                a = FormatObject()
+                xml = a.DictToXml(release_data)
+                a.WriteFile(xml, xml_path)
 
-            print "Wrote file at {0}".format(full_path)
+                print "Wrote file at {0}".format(xml_path)
 
+            else:
+                print "Found {0}".format(xml_path)
 
     def CollectionStyleGraph(self, username="username", folder_id="0"):
         """
