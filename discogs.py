@@ -141,7 +141,7 @@ class DiscogsData():
         path_to_data (str) -- Must be a valid path to a JSON file matching expected formatting.
         """
         self.data = None
-        self.co_graph = None
+        self.graph = None
         self.path_to_data = path_to_data
         if self.path_to_data is not None:
             json_object = FormatObject()
@@ -236,7 +236,7 @@ class DiscogsData():
             else:
                 print "Found {0}".format(xml_path)
 
-    def CollectionStyleGraph(self, username="username", folder_id="0"):
+    def collection_style_graph(self, username="username", folder_id="0"):
         """
         Return networkx graph object linking styles that co-occur by release.
 
@@ -248,10 +248,10 @@ class DiscogsData():
         self.folder_id = folder_id
         if self.data is None:
             self.data = self.GetCollectionStyles()
-        self.co_graph = self.GraphCooccurrenceData(self.data)
-        return self.co_graph
+        self.graph = self.graph_cooccurrence_data(self.data)
+        return self.graph
 
-    def GraphOutput(self, data_type, output_path="co_graph"):
+    def graph_output(self, data_type, output_path="co_graph"):
         """
         Write graph data to formats suitable for Gephi and D3 force layout.
 
@@ -264,9 +264,9 @@ class DiscogsData():
 
         valid_types = ["gephi", "d3"]
 
-        if self.co_graph is None:
+        if self.graph is None:
             print "===No Graph Data Available==="
-            print "===Run GraphCooccurrenceData==="
+            print "===Run graph_cooccurrence_data==="
 
         if data_type not in valid_types:
             print "===Invalid data_type==="
@@ -277,42 +277,76 @@ class DiscogsData():
         if data_type == "gephi":
             if not output_path.endswith(".gexf"):
                 output_path += ".gexf"
-            nx.write_gexf(self.co_graph, output_path)
+            nx.write_gexf(self.graph, output_path)
             print "GEXF Written to {0}".format(output_path)
 
         elif data_type == "d3":
-            data = json_graph.node_link_data(self.co_graph)
+            data = json_graph.node_link_data(self.graph)
             json_data = FormatObject()
             if not output_path.endswith(".json"):
                 output_path += ".json"
             json_data.SaveAsJson(data, output_path)
             print "JSON Written to {0}".format(output_path)
 
-
-    def GraphCooccurrenceData(self, data):
+    def graph_cooccurrence_data(self, data=None):
         """
         Format data representing coocurrences into preliminary nodes and edges.
 
-        Positional arguments:
-        data (list) -- list of instances of coocurring styles.
+        kwargs:
+            data (list) -- list of dict objects, each containing data for one release.
         """
+        if data is None:
+            data = self.data
+        self.graph = nx.Graph()
+        for release in data:
+            self._release = release
+            if "styles" not in release:
+                self._release["styles"] = ["No style information"]
+            if isinstance(self._release["styles"], str):
+                self._release["styles"] = [self._release["styles"]]
+            self._update_nodes()
+            self._update_edges()
+        print self.graph.nodes(data=True)
+        print self.graph.edges(data=True)
 
-        format_nodes = {}
-        format_edges = {}
-        for listing in data:
-            for value in listing:
-                format_nodes[value] = format_nodes.get(value, 0) + 1
-            for c in combinations(listing, 2):
-                c_string = "----".join(c)
-                c_string_reverse = "----".join(c[::-1])
-                if c_string in format_edges:
-                    format_edges[c_string] += 1
-                elif c_string_reverse in format_edges:
-                    format_edges[c_string_reverse] += 1
-                else:
-                    format_edges[c_string] = 1
-        co_graph = self.BuildGraphData(format_nodes, format_edges)
-        return co_graph
+    def _update_nodes(self):
+        """Update node data based on current release."""
+        for style in self._release["styles"]:
+            if style not in self.graph.nodes():
+                self.graph.add_node(style, count=1, ids=[self._release["id"]],
+                                    release_data=[self._get_release_data()])
+            else:
+                self.graph.node[style]["ids"].append(self._release["id"])
+                self.graph.node[style]["release_data"].append(self._get_release_data())
+                self.graph.node[style]["count"] += 1
+
+    def _update_edges(self):
+        """Update edge data based on current release."""
+        for ab in combinations(self._release["styles"], 2):
+            if not self.graph.has_edge(*ab):
+                self.graph.add_edge(ab[0], ab[1])
+                self.graph.add_edge(ab[0], ab[1], weight=1, ids=[self._release["id"]],
+                                    release_data=[self._get_release_data()])
+            else:
+                self.graph.edge[ab[0]][ab[1]]["ids"].append(self._release["id"])
+                self.graph.edge[ab[0]][ab[1]]["release_data"].append(self._get_release_data())
+                self.graph.edge[ab[0]][ab[1]]["weight"] += 1
+
+    def _get_release_data(self):
+        """Get key release data info.
+
+        returns:
+            release_data(dict): contains basic info about release.
+        """
+        release_data = {}
+        release_data["id"] = self._release["id"]
+        release_data["artists"] = ", ".join(a["name"] for a in self._release["artists"])
+        release_data["title"] = self._release["title"]
+        release_data["videos"] = self._release.get("videos", 0)
+        release_data["year"] = self._release.get("year", 0)
+        return release_data
+
+
 
     def BuildGraphData(self, nodes, edges):
         """
@@ -388,8 +422,7 @@ class DiscogsData():
 
         return self.all_releases
 
-
-    def GetCollectionStyles(self):
+    def get_collection_styles(self, source_file=None):
         """Get styles associated with each release in a given collection."""
 
         self.styles_by_release = []

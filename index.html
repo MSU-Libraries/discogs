@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+#graphpage {
+    width: 100%;
+}
+
+.link {
+  stroke: lightgray;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  fill: #000;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  pointer-events: none;
+  font: 12px sans-serif;
+  stroke: green;
+
+}
+
+.node .labels {
+    z-index:100;
+}
+
+#graph, #info {
+    float:right;
+    clear:none;
+    margin:0;
+    padding:0;
+}
+
+#graph {
+    width: 74%;
+
+}
+
+#info {
+    border: 1px solid black;
+    width: 24%;
+    height: auto;
+    padding:10px;
+}
+
+svg {
+    width:100%;
+    height:800px;
+}
+
+h3, h4, h5, p {
+    margin:0;
+    padding:0px;
+}
+
+h4, h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h5 {
+    text-decoration: underline;
+}
+
+
+p {
+    font-size: 10px;
+}
+
+#releases p {
+    margin-top: 5px;
+}
+
+</style>
+<body>
+<!-- <p onclick="test()">test</p>-->
+<div id="graphpage">
+    <div id="info">
+        <h3>Lockwood Collection Styles</h3>
+    </div>
+    <div id="graph"></div>
+</div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+var width = 800,
+    height = 700;
+
+var color = d3.scale.category10();
+
+var nodes = [],
+    links = [];
+
+var force = d3.layout.force()
+    .nodes(nodes)
+    .links(links)
+    .charge(-160)
+    .linkDistance(120)
+    .size([width, height])
+    .on("tick", tick);
+
+var svg = d3.select("#graph").append("svg");
+    //.attr("width", width)
+    //.attr("height", height);
+    
+var node = svg.selectAll(".node"),
+    link = svg.selectAll(".link");
+
+var nodesize = d3.scale.linear()
+                       .domain([1, 100])
+                       .range([5, 12]);
+
+//Toggle stores whether highlighting is on
+var toggle = 0;
+
+get_data();
+
+function get_data() {
+    d3.json("discogs_style_graph.json", function(data) {
+
+        links.push.apply(links, data["links"]);
+        nodes.push.apply(nodes, data["nodes"]);
+        start();
+        });   
+}
+
+function start() {
+
+    //Create an array logging what is connected to what
+    var linkedByIndex = {};
+    for (i = 0; i < nodes.length; i++) {
+        linkedByIndex[i + "," + i] = 1;
+    };
+    links.forEach(function (d) {
+        linkedByIndex[d.source + "," + d.target] = 1;
+    });
+
+    link = link.data(links);
+    link.enter().append("line").attr("class", "link");
+    link.exit().remove();
+
+    node = node.data(nodes);
+
+    node.enter().append("g")
+    .attr("class", "node").call(force.drag)
+    .on('mouseover', connectedNodes)
+    .on('mouseout', connectedNodes)
+    .on('click', styleInfo);
+
+
+    node.append("circle")
+    .attr("class", "circles")
+    .attr("r", function(d){ return nodesize(d.count); });
+
+    node.append("text")
+      .attr("class", "labels")
+      .attr("dx", 12)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.id });
+    node.exit().remove();
+    force.start();
+
+    function styleInfo() {
+        d = d3.select(this).node().__data__;
+        console.log(d)
+        var infoTemplate = "<h3>Lockwood Collection Styles</h3><h4>Style: {stylename}</h4><div id='styleinfo'><p>{count} releases<p>{releases}</div>";
+        var infoHtml = infoTemplate.replace("{stylename}", d.id);
+        var infoHtml = infoHtml.replace("{count}", d.count);
+        var infoHtml = infoHtml.replace("{releases}", generateReleaseData(d));
+        $("#info").hide().html(infoHtml).fadeIn('fast');
+    }
+
+    function generateReleaseData(data) {
+        console.log(d);
+        releaseHtml = "<h5>Releases</h5><div id='releases'>";
+        $.each(d.release_data, function(index, data){
+            releaseHtml += "<p>" + data["artists"] + " -- <a target='_blank' href='https://www.discogs.com/release/{id}'>".replace("{id}", data["id"]) + data["title"] + "</a> (year)".replace("year", data["year"]) + "</p>";
+            if (data["videos"] !== 0) {
+                releaseHtml += '<iframe id="ytplayer" type="text/html" width="200" height="200" src="{url}?origin="localhost" frameborder="0"/>'.replace("{url}", data["videos"][0]["uri"]).replace("watch?v=", "embed/");
+            }
+        })
+        releaseHtml += "</div>";
+        return releaseHtml;
+    }
+
+    // Code adapted from http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/
+    function connectedNodes() {
+        if (toggle == 0) {
+            //Reduce the opacity of all but the neighbouring nodes
+            d = d3.select(this).node().__data__;
+            node.style("opacity", function (o) {
+                return neighboring(d, o) || neighboring(o, d) ? 1 : 0.1;
+            });
+            link.style("opacity", function (o) {
+                return d.index==o.source.index || d.index==o.target.index ? 1 : 0.1;
+            });
+            //Reduce the op
+            toggle = 1;
+        } else {
+            //Put them back to opacity=1
+            node.style("opacity", 1);
+            link.style("opacity", 1);
+            toggle = 0;
+        }
+    }
+    function neighboring(a, b) {
+        return linkedByIndex[a.index + "," + b.index];
+    }
+    
+}
+
+function tick() {
+
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .attr("fill", "black");
+
+    link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+}
+
+function test() {
+    var a = {id: "a"}, b = {id: "b"}, c = {id: "c"};
+    nodes.push(a, b, c);
+    links.push({source: a, target: b}, {source: a, target: c}, {source: b, target: c});
+    start();
+    }
+</script>
