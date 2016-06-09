@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
 <style>
 
 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -9,8 +12,7 @@ body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 }
 
 .link {
-  stroke: lightgray;
-  stroke-width: 1.5px;
+
 }
 
 .node circle {
@@ -80,11 +82,13 @@ p {
 </style>
 <body>
 <!-- <p onclick="test()">test</p>-->
-<div id="graphpage">
-    <div id="info">
+<div id="graphpage" class="container-fluid">
+    <div class="row">
+    <div id="info" class="col-md-4">
         <h3>Lockwood Collection Styles</h3>
     </div>
-    <div id="graph"></div>
+    <div id="graph" class="col-md-8"></div>
+    </div>
 </div>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -117,6 +121,14 @@ var nodesize = d3.scale.linear()
                        .domain([1, 100])
                        .range([5, 12]);
 
+var linksize = d3.scale.linear()
+                       .domain([1, 200])
+                       .range([3, 24]);
+
+var linkcolor = d3.scale.linear()
+                        .domain([1, 200])
+                        .range(["lightgray", "black"]);
+
 //Toggle stores whether highlighting is on
 var toggle = 0;
 
@@ -143,7 +155,12 @@ function start() {
     });
 
     link = link.data(links);
-    link.enter().append("line").attr("class", "link");
+    link.enter().append("line").attr("class", "link")
+    .attr("stroke-width", function(d) { return linksize(d.weight); })
+    .attr("stroke", function(d) { return linkcolor(d.weight); })
+    .on('mouseover', connectedLinks)
+    .on('mouseout', connectedLinks);
+    //.on('click', linkInfo);
     link.exit().remove();
 
     node = node.data(nodes);
@@ -188,6 +205,24 @@ function start() {
         })
         releaseHtml += "</div>";
         return releaseHtml;
+    }
+
+    function connectedLinks() {
+        
+        if (toggle == 0) {
+            d = d3.select(this).node().__data__;
+            link.style("opacity", function(o){
+                return o == d ? 1 : 0.1;
+            });
+            node.style("opacity", function(o){
+                return d.source.index==o.index || d.target.index==o.index ? 1 : 0.1;
+            });
+            toggle = 1;
+        } else {
+            link.style("opacity", 1);
+            node.style("opacity", 1);
+            toggle = 0;
+        }
     }
 
     // Code adapted from http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/
