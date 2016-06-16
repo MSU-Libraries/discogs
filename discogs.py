@@ -1,3 +1,4 @@
+"""Discogs interactions."""
 import urllib
 import requests
 import json
@@ -7,9 +8,11 @@ import time
 import ConfigParser
 from urlparse import urljoin
 import networkx as nx
+import codecs
 from itertools import combinations
 from formatobject.formatobject import FormatObject
 from networkx.readwrite import json_graph
+from collections import Counter
 
 
 class DiscogsApi():
@@ -28,45 +31,27 @@ class DiscogsApi():
 
     def open_url(self, url, request_type=None):
         """Function to make all calls to the API."""
-        """
-        data = ""
-        if self.params:
-            data = urllib.urlencode(self.params)
-            search_url = "?".join([url, data])
-        else:
-            search_url = url
-
-        print search_url
-        """
-        # headers = {'User-agent': self.user_agent}
-
-        # if request_type == "POST":
-        #    response = requests.get(search_url)
-
         response = requests.get(url, params=self.params)
         json_response = response.json()
         time.sleep(2)
         return json_response
 
     def add_param(self, key, value):
-        """
-        Add parameter to the header of the request sent to the API.
+        """Add parameter to the header of the request sent to the API.
 
-        Positional arguments:
-        key (str) -- key to use in header, e.g. 'User-Agent'
-        value (str) -- value to associated with the given key.
+        args:
+            key (str) -- key to use in header, e.g. 'User-Agent'
+            value (str) -- value to associated with the given key.
         """
-
         self.params[key] = value
 
     def clear_params(self):
         """Clear all current header parameters."""
-
         self.params = {}
 
     def get_collection(self, username, folder_id="0", per_page=100):
-        """
-        Use discogs username to return release data from given folder.
+        """Use discogs username to return release data from given folder.
+
         Most folders require authentication for access. Folder "0" is the "all" folder.
 
         Positional arguments:
@@ -76,7 +61,6 @@ class DiscogsApi():
         folder_id (str) -- The folder containing all releases (0) is the only one supported.
         per_page (int) -- The number of results to return per request. Max value is 100.
         """
-
         self.clear_params()
         self.add_param("per_page", per_page)
         self.add_param("token", self.user_token)
@@ -84,6 +68,7 @@ class DiscogsApi():
         self.url = self.build_url(self.collection_extension)
         self.collection = self.open_url(self.url)
         self.releases = self.collection["releases"]
+        self.release_ids = []
         print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
         if self.collection["pagination"]["pages"] > 1:
             for i in range(2, self.collection["pagination"]["pages"] + 1, 1):
@@ -91,6 +76,9 @@ class DiscogsApi():
                 collection = self.open_url(self.url)
                 for release in collection["releases"]:
                     self.releases.append(release)
+
+        for release in self.releases:
+            self.release_ids.append(release["id"])
 
         print "{:=^30} Releases".format(len(self.releases))
 
@@ -130,14 +118,15 @@ class DiscogsData():
     """Class to process data accessed via the Discogs API."""
 
     def __init__(self, path_to_data=None):
-        """
+        """Analyze collection data.
+
         If no data is provided as an argument here (JSON), data will be collected via API.
 
         Keyword arguments:
         path_to_data (str) -- Must be a valid path to a JSON file matching expected formatting.
         """
         self.data = None
-        self.co_graph = None
+        self.graph = None
         self.path_to_data = path_to_data
         if self.path_to_data is not None:
             json_object = FormatObject()
@@ -185,14 +174,19 @@ class DiscogsData():
 
     def _compare_id_lists(self):
         """Check ID lists for all users to find common IDs."""
-        setlist_master = [set(self.master_ids[id_list]["master_ids"]) for id_list in self.master_ids]
-        setlist_release = [set(self.master_ids[id_list]["release_ids"]) for id_list in self.master_ids]
+        setlist_master = [set(self.master_ids[id_list]["master_ids"])
+                          for id_list in self.master_ids]
+
+        setlist_release = [set(self.master_ids[id_list]["release_ids"])
+                           for id_list in self.master_ids]
+
         self.union_ids = set.intersection(*setlist_release)
         self.union_masters = set.intersection(*setlist_master)
 
-    def ReturnXmlReleases(self, username=None, folder_id="folder_id", output_path="/"):
-        """
-        Special function to access release data and transform it into XML.
+
+    def return_xml_releases(self, username="username", folder_id="folder_id",
+                            output_path="/", json_output=False):
+        """Special function to access release data and transform it into XML.
 
         Keyword arguments:
         username (str) -- Any valid discogs user name; no authentication required.
@@ -203,23 +197,33 @@ class DiscogsData():
         self.folder_id = folder_id
         dapi = DiscogsApi(username=username)
         self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
+        release_counter = Counter(dapi.release_ids)
+        print release_counter
         for i, release in enumerate(self.releases):
             r_id = release["id"]
-            release_data = dapi.GetRelease(r_id)
+            json_path = os.path.join(output_path, str(r_id) + ".json")
+            xml_path = os.path.join(output_path,
+                                    str(r_id) + "-{0}.xml".format(release_counter[r_id]))
+            if not os.path.exists(json_path) and not os.path.exists(xml_path):
+                release_data = dapi.GetRelease(r_id)
+                if json_output:
+                    with codecs.open(json_path, "w", "utf-8") as json_file:
+                        json.dump(release_data, json_file, ensure_ascii=False)
 
-            sys.stdout.write("{:=^30}\r".format(i + 1))
-            sys.stdout.flush()
+                sys.stdout.write("{:=^30}\r".format(i + 1))
+                sys.stdout.flush()
 
-            a = FormatObject()
-            xml = a.DictToXml(release_data)
-            full_path = os.path.join(output_path, str(r_id) + ".xml")
-            a.WriteFile(xml, full_path)
+                a = FormatObject()
+                xml = a.DictToXml(release_data)
+                a.WriteFile(xml, xml_path)
 
-            print "Wrote file at {0}".format(full_path)
+                print "Wrote file at {0}".format(xml_path)
 
-    def CollectionStyleGraph(self, username="username", folder_id="0"):
-        """
-        Return networkx graph object linking styles that co-occur by release.
+            else:
+                print "Found {0}".format(xml_path)
+
+    def collection_style_graph(self, username="username", folder_id="0"):
+        """Return networkx graph object linking styles that co-occur by release.
 
         Keyword arguments:
         username (str) -- Any valid discogs user name; no authentication required.
@@ -229,10 +233,10 @@ class DiscogsData():
         self.folder_id = folder_id
         if self.data is None:
             self.data = self.GetCollectionStyles()
-        self.co_graph = self.GraphCooccurrenceData(self.data)
-        return self.co_graph
+        self.graph = self.graph_cooccurrence_data(self.data)
+        return self.graph
 
-    def GraphOutput(self, data_type, output_path="co_graph"):
+    def graph_output(self, data_type, output_path="co_graph"):
         """
         Write graph data to formats suitable for Gephi and D3 force layout.
 
@@ -245,9 +249,9 @@ class DiscogsData():
 
         valid_types = ["gephi", "d3"]
 
-        if self.co_graph is None:
+        if self.graph is None:
             print "===No Graph Data Available==="
-            print "===Run GraphCooccurrenceData==="
+            print "===Run graph_cooccurrence_data==="
 
         if data_type not in valid_types:
             print "===Invalid data_type==="
@@ -258,42 +262,76 @@ class DiscogsData():
         if data_type == "gephi":
             if not output_path.endswith(".gexf"):
                 output_path += ".gexf"
-            nx.write_gexf(self.co_graph, output_path)
+            nx.write_gexf(self.graph, output_path)
             print "GEXF Written to {0}".format(output_path)
 
         elif data_type == "d3":
-            data = json_graph.node_link_data(self.co_graph)
+            data = json_graph.node_link_data(self.graph)
             json_data = FormatObject()
             if not output_path.endswith(".json"):
                 output_path += ".json"
             json_data.SaveAsJson(data, output_path)
             print "JSON Written to {0}".format(output_path)
 
-
-    def GraphCooccurrenceData(self, data):
+    def graph_cooccurrence_data(self, data=None):
         """
         Format data representing coocurrences into preliminary nodes and edges.
 
-        Positional arguments:
-        data (list) -- list of instances of coocurring styles.
+        kwargs:
+            data (list) -- list of dict objects, each containing data for one release.
         """
+        if data is None:
+            data = self.data
+        self.graph = nx.Graph()
+        for release in data:
+            self._release = release
+            if "styles" not in release:
+                self._release["styles"] = ["No style information"]
+            if isinstance(self._release["styles"], str):
+                self._release["styles"] = [self._release["styles"]]
+            self._update_nodes()
+            self._update_edges()
+        print self.graph.nodes(data=True)
+        print self.graph.edges(data=True)
 
-        format_nodes = {}
-        format_edges = {}
-        for listing in data:
-            for value in listing:
-                format_nodes[value] = format_nodes.get(value, 0) + 1
-            for c in combinations(listing, 2):
-                c_string = "----".join(c)
-                c_string_reverse = "----".join(c[::-1])
-                if c_string in format_edges:
-                    format_edges[c_string] += 1
-                elif c_string_reverse in format_edges:
-                    format_edges[c_string_reverse] += 1
-                else:
-                    format_edges[c_string] = 1
-        co_graph = self.BuildGraphData(format_nodes, format_edges)
-        return co_graph
+    def _update_nodes(self):
+        """Update node data based on current release."""
+        for style in self._release["styles"]:
+            if style not in self.graph.nodes():
+                self.graph.add_node(style, count=1, ids=[self._release["id"]],
+                                    release_data=[self._get_release_data()])
+            else:
+                self.graph.node[style]["ids"].append(self._release["id"])
+                self.graph.node[style]["release_data"].append(self._get_release_data())
+                self.graph.node[style]["count"] += 1
+
+    def _update_edges(self):
+        """Update edge data based on current release."""
+        for ab in combinations(self._release["styles"], 2):
+            if not self.graph.has_edge(*ab):
+                self.graph.add_edge(ab[0], ab[1])
+                self.graph.add_edge(ab[0], ab[1], weight=1, ids=[self._release["id"]],
+                                    release_data=[self._get_release_data()])
+            else:
+                self.graph.edge[ab[0]][ab[1]]["ids"].append(self._release["id"])
+                self.graph.edge[ab[0]][ab[1]]["release_data"].append(self._get_release_data())
+                self.graph.edge[ab[0]][ab[1]]["weight"] += 1
+
+    def _get_release_data(self):
+        """Get key release data info.
+
+        returns:
+            release_data(dict): contains basic info about release.
+        """
+        release_data = {}
+        release_data["id"] = self._release["id"]
+        release_data["artists"] = ", ".join(a["name"] for a in self._release["artists"])
+        release_data["title"] = self._release["title"]
+        release_data["videos"] = self._release.get("videos", 0)
+        release_data["year"] = self._release.get("year", 0)
+        return release_data
+
+
 
     def BuildGraphData(self, nodes, edges):
         """
@@ -369,8 +407,7 @@ class DiscogsData():
 
         return self.all_releases
 
-
-    def GetCollectionStyles(self):
+    def get_collection_styles(self, source_file=None):
         """Get styles associated with each release in a given collection."""
 
         self.styles_by_release = []
