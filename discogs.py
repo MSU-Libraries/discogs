@@ -1,35 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
-COPYRIGHT © 2015
-MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES
-ALL RIGHTS RESERVED
- 
-PERMISSION IS GRANTED TO USE, COPY, CREATE DERIVATIVE WORKS AND REDISTRIBUTE
-THIS SOFTWARE AND SUCH DERIVATIVE WORKS FOR ANY PURPOSE, SO LONG AS THE NAME
-OF MICHIGAN STATE UNIVERSITY IS NOT USED IN ANY ADVERTISING OR PUBLICITY
-PERTAINING TO THE USE OR DISTRIBUTION OF THIS SOFTWARE WITHOUT SPECIFIC,
-WRITTEN PRIOR AUTHORIZATION.  IF THE ABOVE COPYRIGHT NOTICE OR ANY OTHER
-IDENTIFICATION OF MICHIGAN STATE UNIVERSITY IS INCLUDED IN ANY COPY OF ANY
-PORTION OF THIS SOFTWARE, THEN THE DISCLAIMER BELOW MUST ALSO BE INCLUDED.
- 
-THIS SOFTWARE IS PROVIDED AS IS, WITHOUT REPRESENTATION FROM MICHIGAN STATE
-UNIVERSITY AS TO ITS FITNESS FOR ANY PURPOSE, AND WITHOUT WARRANTY BY
-MICHIGAN STATE UNIVERSITY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
-WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE. THE MICHIGAN STATE UNIVERSITY BOARD OF TRUSTEES SHALL
-NOT BE LIABLE FOR ANY DAMAGES, INCLUDING SPECIAL, INDIRECT, INCIDENTAL, OR
-CONSEQUENTIAL DAMAGES, WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN
-CONNECTION WITH THE USE OF THE SOFTWARE, EVEN IF IT HAS BEEN OR IS HEREAFTER
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
- 
-Code written by Devin Higgins
-2015
-(c) Michigan State University Board of Trustees
-Licensed under GNU General Public License (GPL) Version 2.
-"""
-
 import urllib
 import requests
 import json
@@ -39,18 +7,16 @@ import time
 import ConfigParser
 from urlparse import urljoin
 import networkx as nx
-from pprint import pprint
 from itertools import combinations
 from formatobject.formatobject import FormatObject
-import networkx as nx
 from networkx.readwrite import json_graph
 
 
 class DiscogsApi():
     """Class for interacting with Discogs API."""
-    
+
     def __init__(self, username=None):
-        """Establish base API url and provide arbitrary user agent name."""    
+        """Establish base API url and provide arbitrary user agent name."""
         self.base_url = "https://api.discogs.com"
         self.user_agent = "DevinHigginsMSULibraries/0.1"
         self.params = {}
@@ -58,9 +24,11 @@ class DiscogsApi():
         if username:
             self.username = username
             self._get_token()
+            self.add_param("token", self.user_token)
 
     def open_url(self, url, request_type=None):
         """Function to make all calls to the API."""
+        """
         data = ""
         if self.params:
             data = urllib.urlencode(self.params)
@@ -69,16 +37,16 @@ class DiscogsApi():
             search_url = url
 
         print search_url
-        headers = {'User-agent': self.user_agent}
-        if request_type == "POST":
-            response = requests.get(search_url)
-        
-        else:
-            response = requests.get(search_url)
+        """
+        # headers = {'User-agent': self.user_agent}
+
+        # if request_type == "POST":
+        #    response = requests.get(search_url)
+
+        response = requests.get(url, params=self.params)
         json_response = response.json()
         time.sleep(2)
         return json_response
-
 
     def add_param(self, key, value):
         """
@@ -111,15 +79,14 @@ class DiscogsApi():
 
         self.clear_params()
         self.add_param("per_page", per_page)
-
+        self.add_param("token", self.user_token)
         self.collection_extension = "/users/{username}/collection/folders/{folder_id}/releases".format(username=username, folder_id=folder_id)
         self.url = self.build_url(self.collection_extension)
         self.collection = self.open_url(self.url)
-
         self.releases = self.collection["releases"]
         print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
         if self.collection["pagination"]["pages"] > 1:
-            for i in range(2, self.collection["pagination"]["pages"]+1, 1):
+            for i in range(2, self.collection["pagination"]["pages"] + 1, 1):
                 self.add_param("page", i)
                 collection = self.open_url(self.url)
                 for release in collection["releases"]:
@@ -143,7 +110,6 @@ class DiscogsApi():
 
         return self.release
 
-
     def build_url(self, url_extension):
         """
         Combine base url and search extension.
@@ -153,7 +119,6 @@ class DiscogsApi():
         """
         return urljoin(self.base_url, url_extension)
 
-
     def _get_token(self):
         """Read config file and get user token."""
         config = ConfigParser.RawConfigParser()
@@ -161,10 +126,9 @@ class DiscogsApi():
         self.user_token = config.get(self.username, "user_token")
 
 
-
 class DiscogsData():
     """Class to process data accessed via the Discogs API."""
-    
+
     def __init__(self, path_to_data=None):
         """
         If no data is provided as an argument here (JSON), data will be collected via API.
@@ -172,7 +136,6 @@ class DiscogsData():
         Keyword arguments:
         path_to_data (str) -- Must be a valid path to a JSON file matching expected formatting.
         """
-        
         self.data = None
         self.co_graph = None
         self.path_to_data = path_to_data
@@ -193,7 +156,7 @@ class DiscogsData():
             self._load_collection(user)
             self.master_ids[user] = {"master_ids": [], "release_ids": []}
             for release in self.releases_by_user[user]:
-                if "master_id" in release:  
+                if "master_id" in release:
                     self.master_ids[user]["master_ids"].append(release["master_id"])
                 else:
                     self.master_ids[user]["release_ids"].append(release["id"])
@@ -220,7 +183,6 @@ class DiscogsData():
         else:
             self.releases_by_user[user] = self.get_full_collection(user)
 
-
     def _compare_id_lists(self):
         """Check ID lists for all users to find common IDs."""
         setlist_master = [set(self.master_ids[id_list]["master_ids"]) for id_list in self.master_ids]
@@ -228,8 +190,7 @@ class DiscogsData():
         self.union_ids = set.intersection(*setlist_release)
         self.union_masters = set.intersection(*setlist_master)
 
-
-    def ReturnXmlReleases(self, username="username", folder_id="folder_id", output_path="/"):
+    def ReturnXmlReleases(self, username=None, folder_id="folder_id", output_path="/"):
         """
         Special function to access release data and transform it into XML.
 
@@ -238,25 +199,23 @@ class DiscogsData():
         folder_id (str) -- The folder containing all releases (0) is the only one supported.
         output_path (str) -- Location to save file(s) to; defaults to current directory.
         """
-
         self.username = username
         self.folder_id = folder_id
-        dapi = DiscogsApi()
+        dapi = DiscogsApi(username=username)
         self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
         for i, release in enumerate(self.releases):
             r_id = release["id"]
             release_data = dapi.GetRelease(r_id)
 
-            sys.stdout.write("{:=^30}\r".format(i+1))
+            sys.stdout.write("{:=^30}\r".format(i + 1))
             sys.stdout.flush()
 
             a = FormatObject()
             xml = a.DictToXml(release_data)
-            full_path = os.path.join(output_path, str(r_id)+".xml")
+            full_path = os.path.join(output_path, str(r_id) + ".xml")
             a.WriteFile(xml, full_path)
 
             print "Wrote file at {0}".format(full_path)
-
 
     def CollectionStyleGraph(self, username="username", folder_id="0"):
         """
