@@ -183,7 +183,6 @@ class DiscogsData():
         self.union_ids = set.intersection(*setlist_release)
         self.union_masters = set.intersection(*setlist_master)
 
-
     def return_xml_releases(self, username="username", folder_id="folder_id",
                             output_path="/", json_output=False):
         """Special function to access release data and transform it into XML.
@@ -198,7 +197,6 @@ class DiscogsData():
         dapi = DiscogsApi(username=username)
         self.releases = dapi.get_collection(self.username, folder_id=self.folder_id)
         release_counter = Counter(dapi.release_ids)
-        print release_counter
         for i, release in enumerate(self.releases):
             r_id = release["id"]
             json_path = os.path.join(output_path, str(r_id) + ".json")
