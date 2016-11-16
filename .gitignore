@@ -4,5 +4,6 @@
 data/
 output/
 xml/
+goldenrod*
 msulibraries*
 config.cfg

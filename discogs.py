@@ -5,8 +5,8 @@ import json
 import os
 import sys
 import time
-import ConfigParser
-from urlparse import urljoin
+import configparser
+from urllib.parse import urljoin
 import networkx as nx
 import codecs
 from itertools import combinations
@@ -22,6 +22,7 @@ class DiscogsApi():
         """Establish base API url and provide arbitrary user agent name."""
         self.base_url = "https://api.discogs.com"
         self.user_agent = "DevinHigginsMSULibraries/0.1"
+        self.headers = {'User-Agent': self.user_agent}
         self.params = {}
 
         if username:
@@ -31,7 +32,8 @@ class DiscogsApi():
 
     def open_url(self, url, request_type=None):
         """Function to make all calls to the API."""
-        response = requests.get(url, params=self.params)
+        print(url, self.params)
+        response = requests.get(url, params=self.params, headers=self.headers)
         json_response = response.json()
         time.sleep(2)
         return json_response
@@ -69,7 +71,7 @@ class DiscogsApi():
         self.collection = self.open_url(self.url)
         self.releases = self.collection["releases"]
         self.release_ids = []
-        print "{:=^30}".format("Getting Collection"), "for {0}".format(username)
+        print("{:=^30}".format("Getting Collection"), "for {0}".format(username))
         if self.collection["pagination"]["pages"] > 1:
             for i in range(2, self.collection["pagination"]["pages"] + 1, 1):
                 self.add_param("page", i)
@@ -80,7 +82,7 @@ class DiscogsApi():
         for release in self.releases:
             self.release_ids.append(release["id"])
 
-        print "{:=^30} Releases".format(len(self.releases))
+        print("{:=^30} Releases".format(len(self.releases)))
 
         return self.releases
 
@@ -109,7 +111,7 @@ class DiscogsApi():
 
     def _get_token(self):
         """Read config file and get user token."""
-        config = ConfigParser.RawConfigParser()
+        config = configparser.RawConfigParser()
         config.read('config.cfg')
         self.user_token = config.get(self.username, "user_token")
 
@@ -153,10 +155,10 @@ class DiscogsData():
         self._compare_id_lists()
         for record in self.releases_by_user[users[0]]:
             if record["id"] in self.union_ids:
-                print "{0} -- {1}".format(record["artists"][0]["name"], record["title"])
+                print("{0} -- {1}".format(record["artists"][0]["name"], record["title"]))
             if "master_id" in record:
                 if record["master_id"] in self.union_masters:
-                    print "{0} -- {1}".format(record["artists"][0]["name"], record["title"])
+                    print("{0} -- {1}".format(record["artists"][0]["name"], record["title"]))
 
     def _load_collection(self, user):
         """
@@ -213,12 +215,12 @@ class DiscogsData():
 
                 a = FormatObject()
                 xml = a.DictToXml(release_data)
-                a.WriteFile(xml, xml_path)
+                a.WriteFile(xml, xml_path, opener="wb")
 
-                print "Wrote file at {0}".format(xml_path)
+                print("Wrote file at {0}".format(xml_path))
 
             else:
-                print "Found {0}".format(xml_path)
+                print("Found {0}".format(xml_path))
 
     def collection_style_graph(self, username="username", folder_id="0"):
         """Return networkx graph object linking styles that co-occur by release.
@@ -248,20 +250,20 @@ class DiscogsData():
         valid_types = ["gephi", "d3"]
 
         if self.graph is None:
-            print "===No Graph Data Available==="
-            print "===Run graph_cooccurrence_data==="
+            print("===No Graph Data Available===")
+            print("===Run graph_cooccurrence_data===")
 
         if data_type not in valid_types:
-            print "===Invalid data_type==="
-            print "===Try==="
+            print("===Invalid data_type===")
+            print("===Try===")
             for t in valid_types:
-                print "==={0}===".format(t)
+                print("==={0}===".format(t))
 
         if data_type == "gephi":
             if not output_path.endswith(".gexf"):
                 output_path += ".gexf"
             nx.write_gexf(self.graph, output_path)
-            print "GEXF Written to {0}".format(output_path)
+            print("GEXF Written to {0}".format(output_path))
 
         elif data_type == "d3":
             data = json_graph.node_link_data(self.graph)
@@ -269,7 +271,7 @@ class DiscogsData():
             if not output_path.endswith(".json"):
                 output_path += ".json"
             json_data.SaveAsJson(data, output_path)
-            print "JSON Written to {0}".format(output_path)
+            print("JSON Written to {0}".format(output_path))
 
     def graph_cooccurrence_data(self, data=None):
         """
@@ -289,8 +291,8 @@ class DiscogsData():
                 self._release["styles"] = [self._release["styles"]]
             self._update_nodes()
             self._update_edges()
-        print self.graph.nodes(data=True)
-        print self.graph.edges(data=True)
+        print(self.graph.nodes(data=True))
+        print(self.graph.edges(data=True))
 
     def _update_nodes(self):
         """Update node data based on current release."""
@@ -391,13 +393,13 @@ class DiscogsData():
                 self.all_releases.append(release_data)
 
             except Exception as e:
-                print e
+                print(e)
                 release_data = dapi.GetRelease(r_id)
                 self.all_releases.append(release_data)
 
             #sys.stdout.write("{:=^30}\r".format(i))
             #sys.stdout.flush()
-            print i
+            print(i)
             i += 1
 
         with open("output/full_collections/{0}_collection.json".format(username), "w") as f:
